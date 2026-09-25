@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Solar Invest</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-20 font-sans">
+
+  <!-- Header -->
+  <header class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-40 flex justify-between items-center shadow-md">
+    <div class="flex items-center gap-2">
+      <div class="bg-amber-400 text-slate-950 p-2 rounded-xl text-lg font-bold">
+        <i class="fa-solid fa-solar-panel"></i>
+      </div>
+      <div>
+        <h1 class="text-base font-bold text-amber-400 leading-tight">The Solar Invest</h1>
+        <p class="text-[10px] text-emerald-400 font-semibold tracking-wider">● SYSTEM ONLINE</p>
+      </div>
+    </div>
+    <div id="userHeaderBadge" class="hidden text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 text-slate-300">
+      <i class="fa-solid fa-phone text-[10px] text-amber-400 mr-1"></i> <span id="headerPhone"></span>
+    </div>
+  </header>
+
+  <!-- Notice Ticker -->
+  <div class="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5 text-xs text-amber-300 flex items-center gap-2 overflow-hidden">
+    <i class="fa-solid fa-bullhorn text-xs"></i>
+    <marquee scrollamount="4">The Solar Invest platform par aapka swagat hai. Task complete karein, doston ko refer karein aur rewards earn karein.</marquee>
+  </div>
+
+  <!-- AUTH SECTION -->
+  <div id="authSection" class="p-4 max-w-sm mx-auto mt-6">
+    <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl">
+      <h2 class="text-lg font-bold text-white mb-1">User Login / Register</h2>
+      <p class="text-xs text-slate-400 mb-4">Apna 10-digit mobile number enter karein.</p>
+      
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs text-slate-400">Mobile Number</label>
+          <input id="authPhone" type="tel" maxlength="10" placeholder="e.g. 9876543210" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-400 mt-1 text-white">
+        </div>
+        <div>
+          <label class="text-xs text-slate-400">Referral Code (Optional)</label>
+          <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-400 mt-1 text-white">
+        </div>
+        <button onclick="handleLogin()" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-bold py-3 rounded-xl text-sm transition mt-2 shadow-lg shadow-amber-500/20">
+          Continue to Dashboard
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN DASHBOARD -->
+  <main id="mainDashboard" class="hidden p-4 max-w-md mx-auto space-y-4">
+    
+    <!-- Wallet Card -->
+    <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-800 p-5 rounded-3xl shadow-xl">
+      <div class="flex justify-between items-start">
+        <div>
+          <p class="text-xs text-slate-400">Total Available Balance</p>
+          <h2 class="text-3xl font-extrabold text-white mt-1">₹<span id="walletBal">0.00</span></h2>
+        </div>
+        <button onclick="logout()" class="text-xs text-rose-400 bg-rose-500/10 px-2.5 py-1 rounded-lg border border-rose-500/20">
+          <i class="fa-solid fa-power-off"></i>
+        </button>
+      </div>
+      
+      <div class="grid grid-cols-2 gap-3 mt-5">
+        <button onclick="openModal('depositModal')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-amber-400/20">
+          <i class="fa-solid fa-qrcode"></i> Deposit Money
+        </button>
+        <button onclick="openModal('withdrawModal')" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700">
+          <i class="fa-solid fa-building-columns"></i> Withdraw
+        </button>
+      </div>
+    </div>
+
+    <!-- Solar Energy Tasks -->
+    <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
+      <h3 class="font-bold text-sm text-white mb-1"><i class="fa-solid fa-list-check text-amber-400 mr-1.5"></i> Daily Tasks & Rewards</h3>
+      <p class="text-xs text-slate-400 mb-3">Task complete karein aur turant balance credit paayein.</p>
+      
+      <div class="space-y-2.5">
+        <div class="bg-slate-950 border border-slate-800/80 p-3 rounded-xl flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-brands fa-telegram text-sky-400 text-xl"></i>
+            <div>
+              <p class="text-xs font-semibold">Join Telegram Channel</p>
+              <span class="text-[10px] text-emerald-400 font-bold">+₹50 Bonus</span>
+            </div>
+          </div>
+          <button onclick="claimBonus(50, 'Telegram Join')" class="bg-sky-600 hover:bg-sky-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium">Claim</button>
+        </div>
+
+        <div class="bg-slate-950 border border-slate-800/80 p-3 rounded-xl flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
+            <div>
+              <p class="text-xs font-semibold">Join WhatsApp Group</p>
+              <span class="text-[10px] text-emerald-400 font-bold">+₹30 Bonus</span>
+            </div>
+          </div>
+          <button onclick="claimBonus(30, 'WhatsApp Join')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium">Claim</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Refer & Earn -->
+    <div class="bg-gradient-to-r from-emerald-950/40 to-slate-900 border border-emerald-900/40 p-4 rounded-2xl">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-users text-emerald-400 mr-1.5"></i> Refer & Earn</h3>
+        <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20">Solar Level 1</span>
+      </div>
+      <p class="text-xs text-slate-300 mb-3">Apne referral link ko share karein aur commission paayein.</p>
+      
+      <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between gap-2 mb-3">
+        <span id="refCodeText" class="text-xs text-amber-400 font-mono font-bold tracking-wider">CODE</span>
+        <button onclick="copyReferralLink()" class="text-xs text-slate-300 hover:text-white bg-slate-800 px-2.5 py-1 rounded-md">
+          <i class="fa-regular fa-copy"></i> Copy Link
+        </button>
+      </div>
+
+      <button onclick="shareOnWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+        <i class="fa-brands fa-whatsapp text-base"></i> Share on WhatsApp
+      </button>
+    </div>
+
+  </main>
+
+  <!-- DEPOSIT MODAL -->
+  <div id="depositModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-bold text-sm text-white">Deposit via UPI QR</h3>
+        <button onclick="closeModal('depositModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="bg-white p-3 rounded-2xl text-center w-48 mx-auto shadow-inner">
+        <img id="qrDisplay" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=dummyupi@bank&pn=TheSolarInvest" class="w-full h-auto mx-auto" alt="UPI QR">
+        <p class="text-[10px] text-slate-600 mt-1 font-semibold">Scan with GPay / PhonePe / Paytm</p>
+      </div>
+
+      <div class="space-y-2.5 text-xs">
+        <div>
+          <label class="text-slate-400">Amount Paid (₹)</label>
+          <input id="depositAmount" type="number" placeholder="Enter Amount" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
+        </div>
+        <div>
+          <label class="text-slate-400">12-Digit UPI Ref / UTR Number</label>
+          <input id="depositUTR" type="text" maxlength="12" placeholder="e.g. 4268xxxxxxxx" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
+        </div>
+      </div>
+
+      <button onclick="submitDeposit()" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs shadow-lg shadow-amber-400/20">
+        Submit Payment Request
+      </button>
+    </div>
+  </div>
+
+  <!-- WITHDRAW MODAL -->
+  <div id="withdrawModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-bold text-sm text-white">Withdraw Funds</h3>
+        <button onclick="closeModal('withdrawModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="space-y-2.5 text-xs">
+        <div>
+          <label class="text-slate-400">Withdrawal Amount (₹)</label>
+          <input id="withdrawAmount" type="number" placeholder="Min. ₹200" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
+        </div>
+        <div>
+          <label class="text-slate-400">UPI ID / Bank Account Details</label>
+          <input id="withdrawUPI" type="text" placeholder="e.g. yourname@okaxis" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
+        </div>
+      </div>
+
+      <button onclick="submitWithdraw()" class="w-full bg-slate-100 hover:bg-white text-slate-950 font-bold py-2.5 rounded-xl text-xs shadow-lg">
+        Submit Withdrawal
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://puhjkcduenvztfjhwvho.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_F6VJHXWv-1qxAaCnc5vrMA_eKsdiFtC";
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    let currentUser = null;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('ref')) {
+      document.getElementById('authRef').value = urlParams.get('ref');
+    }
+
+    window.onload = () => {
+      const savedPhone = localStorage.getItem('solar_phone');
+      if (savedPhone) {
+        loadUserProfile(savedPhone);
+      }
+    };
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    async function handleLogin() {
+      const phone = document.getElementById('authPhone').value.trim();
+      const refBy = document.getElementById('authRef').value.trim();
+
+      if (phone.length !== 10) {
+        alert("Kripya 10-digit ka mobile number enter karein.");
+        return;
+      }
+
+      let { data: user, error } = await client.from('profiles').select('*').eq('phone', phone).single();
+
+      if (!user) {
+        const myRefCode = "SOLAR" + Math.floor(1000 + Math.random() * 9000);
+        const { data: newUser, error: createError } = await client.from('profiles').insert([
+          { phone: phone, referral_code: myRefCode, referred_by: refBy || null, balance: 0 }
+        ]).select().single();
+
+        if (createError) {
+          alert("Error: " + createError.message);
+          return;
+        }
+        user = newUser;
+      }
+
+      localStorage.setItem('solar_phone', user.phone);
+      loadUserProfile(user.phone);
+    }
+
+    async function loadUserProfile(phone) {
+      const { data: user, error } = await client.from('profiles').select('*').eq('phone', phone).single();
+      if(user) {
+        currentUser = user;
+        document.getElementById('authSection').classList.add('hidden');
+        document.getElementById('mainDashboard').classList.remove('hidden');
+        document.getElementById('userHeaderBadge').classList.remove('hidden');
+        document.getElementById('headerPhone').innerText = user.phone;
+        document.getElementById('walletBal').innerText = parseFloat(user.balance).toFixed(2);
+        document.getElementById('refCodeText').innerText = user.referral_code;
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('solar_phone');
+      location.reload();
+    }
+
+    async function claimBonus(amount, taskName) {
+      if(!currentUser) return;
+      const newBal = parseFloat(currentUser.balance) + amount;
+      const { error } = await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
+      if(!error) {
+        currentUser.balance = newBal;
+        document.getElementById('walletBal').innerText = newBal.toFixed(2);
+        alert(`Badhai ho! ₹${amount} aapke wallet mein jud gaye (${taskName}).`);
+      } else {
+        alert("Task reward error: " + error.message);
+      }
+    }
+
+    async function submitDeposit() {
+      const amount = document.getElementById('depositAmount').value;
+      const utr = document.getElementById('depositUTR').value.trim();
+
+      if(!amount || utr.length < 8) {
+        alert("Valid amount aur UTR number enter karein.");
+        return;
+      }
+
+      const { error } = await client.from('transactions').insert([
+        { user_phone: currentUser.phone, amount: amount, utr: utr, type: 'deposit', status: 'pending' }
+      ]);
+
+      if(error) {
+        alert("Error: " + error.message);
+      } else {
+        alert("Deposit request submit ho gayi hai! Admin verification ke baad balance add ho jayega.");
+        closeModal('depositModal');
+      }
+    }
+
+    async function submitWithdraw() {
+      const amount = parseFloat(document.getElementById('withdrawAmount').value);
+      const upi = document.getElementById('withdrawUPI').value.trim();
+
+      if(!amount || amount < 200) {
+        alert("Minimum withdrawal limit ₹200 hai.");
+        return;
+      }
+      if(amount > currentUser.balance) {
+        alert("Aapke paas paryapt balance nahi hai.");
+        return;
+      }
+      if(!upi) {
+        alert("UPI ID enter karein.");
+        return;
+      }
+
+      const newBal = currentUser.balance - amount;
+      await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
+      currentUser.balance = newBal;
+      document.getElementById('walletBal').innerText = newBal.toFixed(2);
+
+      await client.from('transactions').insert([
+        { user_phone: currentUser.phone, amount: amount, upi_id: upi, type: 'withdraw', status: 'pending' }
+      ]);
+
+      alert("Withdrawal request lag gayi hai. Payout process hone par notify kiya jayega.");
+      closeModal('withdrawModal');
+    }
+
+    function copyReferralLink() {
+      const link = window.location.origin + window.location.pathname + "?ref=" + currentUser.referral_code;
+      navigator.clipboard.writeText(link);
+      alert("Referral link copied!");
+    }
+
+    function shareOnWhatsApp() {
+      const link = window.location.origin + window.location.pathname + "?ref=" + currentUser.referral_code;
+      const text = encodeURIComponent(`The Solar Invest platform join karein aur roz tasks complete karke earn karein!\nLink: ${link}`);
+      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
