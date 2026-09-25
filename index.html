@@ -10,7 +10,6 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen pb-24 font-sans antialiased">
 
-  <!-- Header -->
   <header class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-40 flex justify-between items-center shadow-lg">
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 rounded-xl bg-amber-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-md">
@@ -33,13 +32,11 @@
     </div>
   </header>
 
-  <!-- Notice -->
   <div class="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5 text-xs text-amber-300 flex items-center gap-2">
     <i class="fa-solid fa-bullhorn text-xs text-amber-400"></i>
     <marquee scrollamount="4">The Solar Invest me daily income plans live hain! 24/7 VIP WhatsApp support uplabdh hai.</marquee>
   </div>
 
-  <!-- AUTH SECTION -->
   <div id="authSection" class="p-4 max-w-sm mx-auto mt-6">
     <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl">
       <div class="text-center mb-5">
@@ -50,30 +47,28 @@
         <p class="text-xs text-slate-400 mt-1">Apna naam aur 10 digit mobile number dalein.</p>
       </div>
       
-      <div class="space-y-3.5">
+      <form onsubmit="handleLogin(event)" class="space-y-3.5">
         <div>
           <label class="text-xs font-semibold text-slate-300">Aapka Naam (Full Name)</label>
-          <input id="authName" type="text" placeholder="e.g. Rahul Dubey" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1">
+          <input id="authName" type="text" placeholder="e.g. Vikash" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1">
         </div>
         <div>
           <label class="text-xs font-semibold text-slate-300">Mobile Number (10 Digits)</label>
-          <input id="authPhone" type="tel" maxlength="10" placeholder="e.g. 9876543210" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
+          <input id="authPhone" type="tel" maxlength="10" placeholder="e.g. 9559032116" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
         </div>
         <div>
           <label class="text-xs font-semibold text-slate-300">Referral Code (Optional)</label>
           <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
         </div>
-        <button id="loginBtn" onclick="handleLogin()" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-black py-3 rounded-xl text-sm transition mt-2 shadow-lg shadow-amber-400/20 flex items-center justify-center">
+        <button id="loginBtn" type="submit" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-black py-3 rounded-xl text-sm transition mt-2 shadow-lg shadow-amber-400/20">
           Continue to Dashboard
         </button>
-      </div>
+      </form>
     </div>
   </div>
 
-  <!-- MAIN DASHBOARD -->
   <main id="mainDashboard" class="hidden p-4 max-w-md mx-auto space-y-4">
     
-    <!-- Profile & Wallet Card -->
     <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-800 p-5 rounded-3xl shadow-xl">
       <div class="flex justify-between items-start">
         <div class="flex items-center gap-3">
@@ -106,14 +101,12 @@
       </div>
     </div>
 
-    <!-- PRODUCTS / PLANS -->
     <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl space-y-3">
       <div class="flex items-center justify-between">
         <h3 class="font-extrabold text-sm text-white"><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Solar Investment Projects</h3>
         <span class="text-[10px] bg-amber-400/10 text-amber-300 px-2 py-0.5 rounded-md border border-amber-400/20 font-bold">VERIFIED</span>
       </div>
 
-      <!-- Plan 1: 290 -->
       <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex flex-col gap-3">
         <div class="flex gap-3 items-center">
           <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
@@ -133,7 +126,6 @@
         </button>
       </div>
 
-      <!-- Plan 2: 399 -->
       <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex flex-col gap-3">
         <div class="flex gap-3 items-center">
           <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl flex-shrink-0">
@@ -154,7 +146,6 @@
       </div>
     </div>
 
-    <!-- ACTIVE PLANS -->
     <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl">
       <h3 class="font-bold text-sm text-white mb-2.5 flex items-center gap-2">
         <i class="fa-solid fa-boxes-stacked text-sky-400"></i> Mere Active Plans
@@ -164,7 +155,6 @@
       </div>
     </div>
 
-    <!-- Refer & Earn -->
     <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl">
       <h3 class="font-bold text-sm text-white mb-1"><i class="fa-solid fa-share-nodes text-emerald-400 mr-1.5"></i> Referral Program</h3>
       <p class="text-xs text-slate-400 mb-3">Apne referral link ko share karein.</p>
@@ -186,13 +176,11 @@
 
   </main>
 
-  <!-- FLOATING 24/7 WHATSAPP SUPPORT BUTTON -->
   <a id="waSupportBtn" href="https://wa.me/919559032116?text=Hello%20The%20Solar%20Invest%20Support,%20mujhe%20help%20chahiye." target="_blank" class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-full flex items-center gap-2 shadow-2xl border-2 border-emerald-400 text-xs font-bold transition">
     <i class="fa-brands fa-whatsapp text-lg"></i>
     <span>24/7 Support</span>
   </a>
 
-  <!-- DEPOSIT MODAL -->
   <div id="depositModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
       <div class="flex justify-between items-center">
@@ -215,7 +203,6 @@
     </div>
   </div>
 
-  <!-- WITHDRAW MODAL -->
   <div id="withdrawModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
       <div class="flex justify-between items-center">
@@ -241,27 +228,28 @@
   <script>
     const SUPABASE_URL = "https://puhjkcduenvztfjhwvho.supabase.co";
     const SUPABASE_KEY = "sb_publishable_F6VJHXWv-1qxAaCnc5vrMA_eKsdiFtC";
-    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    let client = null;
+
+    if (window.supabase) {
+      client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    }
 
     let currentUser = null;
 
-    const urlParams = new URLSearchParams(window.location.search);
-    if(urlParams.get('ref')) {
-      const refInput = document.getElementById('authRef');
-      if(refInput) refInput.value = urlParams.get('ref');
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('load', () => {
       const savedPhone = localStorage.getItem('solar_phone');
+      const savedName = localStorage.getItem('solar_name');
       if (savedPhone) {
-        loadUserProfile(savedPhone);
+        showDashboard({ phone: savedPhone, full_name: savedName || 'Solar Member', balance: localStorage.getItem('solar_bal') || 0, referral_code: 'SOLAR' + savedPhone.slice(-4) });
+        if(client) loadUserProfile(savedPhone);
       }
     });
 
     function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
-    async function handleLogin() {
+    async function handleLogin(e) {
+      if(e) e.preventDefault();
       const loginBtn = document.getElementById('loginBtn');
       const name = document.getElementById('authName').value.trim() || 'Solar Member';
       const phone = document.getElementById('authPhone').value.trim();
@@ -272,107 +260,103 @@
         return;
       }
 
-      loginBtn.innerText = "Please wait...";
+      loginBtn.innerText = "Opening Dashboard...";
       loginBtn.disabled = true;
 
-      try {
-        let { data: users, error: fetchError } = await client.from('profiles').select('*').eq('phone', phone);
-        
-        if (fetchError) {
-          alert("Database Error: " + fetchError.message);
-          loginBtn.innerText = "Continue to Dashboard";
-          loginBtn.disabled = false;
-          return;
-        }
+      const localUserData = {
+        phone: phone,
+        full_name: name,
+        balance: 0,
+        referral_code: "SOLAR" + phone.slice(-4)
+      };
 
-        let user = (users && users.length > 0) ? users[0] : null;
+      localStorage.setItem('solar_phone', phone);
+      localStorage.setItem('solar_name', name);
 
-        if (!user) {
-          const myRefCode = "SOLAR" + Math.floor(1000 + Math.random() * 9000);
-          const { data: newUser, error: createError } = await client.from('profiles').insert([
-            { phone: phone, full_name: name, referral_code: myRefCode, referred_by: refBy || null, balance: 0 }
-          ]).select().single();
+      showDashboard(localUserData);
 
-          if (createError) {
-            alert("Registration Error: " + createError.message);
-            loginBtn.innerText = "Continue to Dashboard";
-            loginBtn.disabled = false;
-            return;
+      if(client) {
+        try {
+          let { data: user } = await client.from('profiles').select('*').eq('phone', phone).maybeSingle();
+          if (!user) {
+            const { data: newUser } = await client.from('profiles').insert([
+              { phone: phone, full_name: name, referral_code: localUserData.referral_code, referred_by: refBy || null, balance: 0 }
+            ]).select().single();
+            if(newUser) currentUser = newUser;
+          } else {
+            currentUser = user;
+            showDashboard(user);
           }
-          user = newUser;
+          loadUserPlans();
+        } catch(err) {
+          console.log("Sync error:", err);
         }
-
-        localStorage.setItem('solar_phone', user.phone);
-        loadUserProfile(user.phone);
-      } catch (err) {
-        alert("Unexpected Error: " + err.message);
-      } finally {
-        loginBtn.innerText = "Continue to Dashboard";
-        loginBtn.disabled = false;
       }
     }
 
-    async function loadUserProfile(phone) {
-      try {
-        const { data: user, error } = await client.from('profiles').select('*').eq('phone', phone).single();
-        if(user) {
-          currentUser = user;
-          const displayName = user.full_name || 'Solar Member';
-          document.getElementById('authSection').classList.add('hidden');
-          document.getElementById('mainDashboard').classList.remove('hidden');
-          document.getElementById('userHeaderBadge').classList.remove('hidden');
-          
-          document.getElementById('headerName').innerText = displayName;
-          document.getElementById('headerPhone').innerText = user.phone;
-          document.getElementById('profileNameDisplay').innerText = displayName;
-          document.getElementById('profilePhoneDisplay').innerText = "+91 " + user.phone;
-          document.getElementById('avatarLetter').innerText = displayName.charAt(0).toUpperCase();
+    function showDashboard(user) {
+      currentUser = user;
+      const displayName = user.full_name || 'Solar Member';
+      document.getElementById('authSection').classList.add('hidden');
+      document.getElementById('mainDashboard').classList.remove('hidden');
+      document.getElementById('userHeaderBadge').classList.remove('hidden');
+      
+      document.getElementById('headerName').innerText = displayName;
+      document.getElementById('headerPhone').innerText = user.phone;
+      document.getElementById('profileNameDisplay').innerText = displayName;
+      document.getElementById('profilePhoneDisplay').innerText = "+91 " + user.phone;
+      document.getElementById('avatarLetter').innerText = displayName.charAt(0).toUpperCase();
 
-          document.getElementById('walletBal').innerText = parseFloat(user.balance || 0).toFixed(2);
-          document.getElementById('refCodeText').innerText = user.referral_code;
-          loadUserPlans();
-        }
-      } catch(e) {
-        console.error(e);
+      document.getElementById('walletBal').innerText = parseFloat(user.balance || 0).toFixed(2);
+      document.getElementById('refCodeText').innerText = user.referral_code || ("SOLAR" + user.phone.slice(-4));
+    }
+
+    async function loadUserProfile(phone) {
+      if(!client) return;
+      const { data: user } = await client.from('profiles').select('*').eq('phone', phone).maybeSingle();
+      if(user) {
+        showDashboard(user);
+        localStorage.setItem('solar_bal', user.balance || 0);
+        loadUserPlans();
       }
     }
 
     async function buyPlan(name, price, dailyIncome, days) {
       if(!currentUser) return;
-      if(parseFloat(currentUser.balance || 0) < price) {
-        alert(`Aapke wallet me ₹${price} nahi hain! Pehle 'Add Cash' par click karke paise add karein.`);
+      const currentBal = parseFloat(currentUser.balance || 0);
+      if(currentBal < price) {
+        alert(`Aapke wallet me paryapt balance nahi hai! Pehle 'Add Cash' par click karke paise add karein.`);
         openModal('depositModal');
         return;
       }
 
       if(!confirm(`Kya aap ₹${price} me "${name}" buy karna chahte hain?`)) return;
 
-      const newBal = parseFloat(currentUser.balance) - price;
-      const { error: balError } = await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
-      if(balError) {
-        alert("Balance error: " + balError.message);
-        return;
-      }
-
+      const newBal = currentBal - price;
       currentUser.balance = newBal;
       document.getElementById('walletBal').innerText = newBal.toFixed(2);
+      localStorage.setItem('solar_bal', newBal);
 
-      await client.from('user_plans').insert([
-        {
-          user_phone: currentUser.phone,
-          plan_name: name,
-          plan_price: price,
-          daily_income: dailyIncome,
-          total_days: days,
-          claimed_days: 0
-        }
-      ]);
+      if(client) {
+        await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
+        await client.from('user_plans').insert([
+          {
+            user_phone: currentUser.phone,
+            plan_name: name,
+            plan_price: price,
+            daily_income: dailyIncome,
+            total_days: days,
+            claimed_days: 0
+          }
+        ]);
+        loadUserPlans();
+      }
 
       alert(`Badhai ho! "${name}" activate ho gaya.`);
-      loadUserPlans();
     }
 
     async function loadUserPlans() {
+      if(!client || !currentUser) return;
       const { data: plans } = await client.from('user_plans').select('*').eq('user_phone', currentUser.phone).order('id', { ascending: false });
       const container = document.getElementById('myPlansList');
       if(!plans || plans.length === 0) {
@@ -400,9 +384,22 @@
     }
 
     async function claimPlanDaily(planId, income) {
+      if(!client) return;
       const { data: plan } = await client.from('user_plans').select('*').eq('id', planId).single();
       if(!plan) return;
 
       if(plan.last_claimed_at) {
         const last = new Date(plan.last_claimed_at).getTime();
-        const now = new Date().getTi
+        const now = new Date().getTime();
+        const diffHours = (now - last) / (1000 * 60 * 60);
+        if(diffHours < 24) {
+          const waitHours = Math.ceil(24 - diffHours);
+          alert(`Aaj ka reward claim ho chuka hai! Agla reward ${waitHours} ghante baad aayega.`);
+          return;
+        }
+      }
+
+      const newClaimed = (plan.claimed_days || 0) + 1;
+      await client.from('user_plans').update({
+        claimed_days: newClaimed,
+        last_claimed_
