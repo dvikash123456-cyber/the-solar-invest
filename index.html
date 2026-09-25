@@ -29,7 +29,7 @@
   <!-- Notice Ticker -->
   <div class="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5 text-xs text-amber-300 flex items-center gap-2 overflow-hidden">
     <i class="fa-solid fa-bullhorn text-xs"></i>
-    <marquee scrollamount="4">The Solar Invest platform par aapka swagat hai. Task complete karein, doston ko refer karein aur rewards earn karein.</marquee>
+    <marquee scrollamount="4">The Solar Invest me naye high return plans live ho chuke hain! Daily income claim karein.</marquee>
   </div>
 
   <!-- AUTH SECTION -->
@@ -68,44 +68,55 @@
           <i class="fa-solid fa-power-off"></i>
         </button>
       </div>
-      
-      <div class="grid grid-cols-2 gap-3 mt-5">
-        <button onclick="openModal('depositModal')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-amber-400/20">
-          <i class="fa-solid fa-qrcode"></i> Deposit Money
+    </div>
+
+    <!-- PRODUCTS / INVESTMENT PLANS SECTION -->
+    <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl space-y-3">
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Solar Investment Plans</h3>
+        <span class="text-[10px] bg-amber-400/10 text-amber-300 px-2 py-0.5 rounded-md border border-amber-400/20 font-bold">HOT PLANS</span>
+      </div>
+
+      <!-- Plan 1: 290 -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl flex flex-col gap-2.5">
+        <div class="flex justify-between items-start">
+          <div>
+            <h4 class="font-bold text-sm text-amber-400">Solar Mini Panel (Plan 1)</h4>
+            <p class="text-[11px] text-slate-400">Daily Income: <span class="text-emerald-400 font-bold">₹300 / Day</span></p>
+            <p class="text-[11px] text-slate-400">Validity: <span class="text-white font-bold">15 Din</span> (Total: ₹4,500)</p>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-black text-white">₹290</span>
+          </div>
+        </div>
+        <button onclick="buyPlan('Solar Mini Panel', 290, 300, 15)" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2 rounded-lg text-xs shadow-md shadow-amber-400/10">
+          Buy Now (₹290)
         </button>
-        <button onclick="openModal('withdrawModal')" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5 border border-slate-700">
-          <i class="fa-solid fa-building-columns"></i> Withdraw
+      </div>
+
+      <!-- Plan 2: 399 -->
+      <div class="bg-slate-950 border border-slate-800 p-4 rounded-xl flex flex-col gap-2.5">
+        <div class="flex justify-between items-start">
+          <div>
+            <h4 class="font-bold text-sm text-emerald-400">Solar Super Panel (Plan 2)</h4>
+            <p class="text-[11px] text-slate-400">Daily Income: <span class="text-emerald-400 font-bold">₹400 / Day</span></p>
+            <p class="text-[11px] text-slate-400">Validity: <span class="text-white font-bold">20 Din</span> (Total: ₹8,000)</p>
+          </div>
+          <div class="text-right">
+            <span class="text-lg font-black text-white">₹399</span>
+          </div>
+        </div>
+        <button onclick="buyPlan('Solar Super Panel', 399, 400, 20)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-2 rounded-lg text-xs shadow-md shadow-emerald-500/10">
+          Buy Now (₹399)
         </button>
       </div>
     </div>
 
-    <!-- Solar Energy Tasks -->
+    <!-- MY ACTIVE PLANS -->
     <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl">
-      <h3 class="font-bold text-sm text-white mb-1"><i class="fa-solid fa-list-check text-amber-400 mr-1.5"></i> Daily Tasks & Rewards</h3>
-      <p class="text-xs text-slate-400 mb-3">Task complete karein aur turant balance credit paayein.</p>
-      
-      <div class="space-y-2.5">
-        <div class="bg-slate-950 border border-slate-800/80 p-3 rounded-xl flex items-center justify-between">
-          <div class="flex items-center gap-2.5">
-            <i class="fa-brands fa-telegram text-sky-400 text-xl"></i>
-            <div>
-              <p class="text-xs font-semibold">Join Telegram Channel</p>
-              <span class="text-[10px] text-emerald-400 font-bold">+₹50 Bonus</span>
-            </div>
-          </div>
-          <button onclick="claimBonus(50, 'Telegram Join')" class="bg-sky-600 hover:bg-sky-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium">Claim</button>
-        </div>
-
-        <div class="bg-slate-950 border border-slate-800/80 p-3 rounded-xl flex items-center justify-between">
-          <div class="flex items-center gap-2.5">
-            <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
-            <div>
-              <p class="text-xs font-semibold">Join WhatsApp Group</p>
-              <span class="text-[10px] text-emerald-400 font-bold">+₹30 Bonus</span>
-            </div>
-          </div>
-          <button onclick="claimBonus(30, 'WhatsApp Join')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3 py-1.5 rounded-lg font-medium">Claim</button>
-        </div>
+      <h3 class="font-bold text-sm text-white mb-2"><i class="fa-solid fa-clock-rotate-left text-sky-400 mr-1.5"></i> Mere Active Plans</h3>
+      <div id="myPlansList" class="space-y-2">
+        <p class="text-xs text-slate-500 text-center py-2">Abhi tak koi plan active nahi hai.</p>
       </div>
     </div>
 
@@ -115,7 +126,7 @@
         <h3 class="font-bold text-sm text-white"><i class="fa-solid fa-users text-emerald-400 mr-1.5"></i> Refer & Earn</h3>
         <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20">Solar Level 1</span>
       </div>
-      <p class="text-xs text-slate-300 mb-3">Apne referral link ko share karein aur commission paayein.</p>
+      <p class="text-xs text-slate-300 mb-3">Apne referral link ko share karein aur doston ko join karwayein.</p>
       
       <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex items-center justify-between gap-2 mb-3">
         <span id="refCodeText" class="text-xs text-amber-400 font-mono font-bold tracking-wider">CODE</span>
@@ -130,61 +141,6 @@
     </div>
 
   </main>
-
-  <!-- DEPOSIT MODAL -->
-  <div id="depositModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center">
-        <h3 class="font-bold text-sm text-white">Deposit via UPI QR</h3>
-        <button onclick="closeModal('depositModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-
-      <div class="bg-white p-3 rounded-2xl text-center w-48 mx-auto shadow-inner">
-        <img id="qrDisplay" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=dummyupi@bank&pn=TheSolarInvest" class="w-full h-auto mx-auto" alt="UPI QR">
-        <p class="text-[10px] text-slate-600 mt-1 font-semibold">Scan with GPay / PhonePe / Paytm</p>
-      </div>
-
-      <div class="space-y-2.5 text-xs">
-        <div>
-          <label class="text-slate-400">Amount Paid (₹)</label>
-          <input id="depositAmount" type="number" placeholder="Enter Amount" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-        <div>
-          <label class="text-slate-400">12-Digit UPI Ref / UTR Number</label>
-          <input id="depositUTR" type="text" maxlength="12" placeholder="e.g. 4268xxxxxxxx" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-      </div>
-
-      <button onclick="submitDeposit()" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl text-xs shadow-lg shadow-amber-400/20">
-        Submit Payment Request
-      </button>
-    </div>
-  </div>
-
-  <!-- WITHDRAW MODAL -->
-  <div id="withdrawModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center">
-        <h3 class="font-bold text-sm text-white">Withdraw Funds</h3>
-        <button onclick="closeModal('withdrawModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-
-      <div class="space-y-2.5 text-xs">
-        <div>
-          <label class="text-slate-400">Withdrawal Amount (₹)</label>
-          <input id="withdrawAmount" type="number" placeholder="Min. ₹200" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-        <div>
-          <label class="text-slate-400">UPI ID / Bank Account Details</label>
-          <input id="withdrawUPI" type="text" placeholder="e.g. yourname@okaxis" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-      </div>
-
-      <button onclick="submitWithdraw()" class="w-full bg-slate-100 hover:bg-white text-slate-950 font-bold py-2.5 rounded-xl text-xs shadow-lg">
-        Submit Withdrawal
-      </button>
-    </div>
-  </div>
 
   <script>
     const SUPABASE_URL = "https://puhjkcduenvztfjhwvho.supabase.co";
@@ -205,9 +161,6 @@
       }
     };
 
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-
     async function handleLogin() {
       const phone = document.getElementById('authPhone').value.trim();
       const refBy = document.getElementById('authRef').value.trim();
@@ -217,7 +170,7 @@
         return;
       }
 
-      let { data: user, error } = await client.from('profiles').select('*').eq('phone', phone).single();
+      let { data: user } = await client.from('profiles').select('*').eq('phone', phone).single();
 
       if (!user) {
         const myRefCode = "SOLAR" + Math.floor(1000 + Math.random() * 9000);
@@ -237,85 +190,119 @@
     }
 
     async function loadUserProfile(phone) {
-      const { data: user, error } = await client.from('profiles').select('*').eq('phone', phone).single();
+      const { data: user } = await client.from('profiles').select('*').eq('phone', phone).single();
       if(user) {
         currentUser = user;
         document.getElementById('authSection').classList.add('hidden');
         document.getElementById('mainDashboard').classList.remove('hidden');
         document.getElementById('userHeaderBadge').classList.remove('hidden');
         document.getElementById('headerPhone').innerText = user.phone;
-        document.getElementById('walletBal').innerText = parseFloat(user.balance).toFixed(2);
+        document.getElementById('walletBal').innerText = parseFloat(user.balance || 0).toFixed(2);
         document.getElementById('refCodeText').innerText = user.referral_code;
+        loadUserPlans();
+      }
+    }
+
+    async function buyPlan(name, price, dailyIncome, days) {
+      if(!currentUser) return;
+      if(parseFloat(currentUser.balance || 0) < price) {
+        alert(`Aapke wallet me ₹${price} nahi hain! Plan buy karne ke liye paryapt balance hona chahiye.`);
+        return;
+      }
+
+      const confirmBuy = confirm(`Kya aap ₹${price} me "${name}" buy karna chahte hain?`);
+      if(!confirmBuy) return;
+
+      const newBal = parseFloat(currentUser.balance) - price;
+      const { error: balError } = await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
+      if(balError) {
+        alert("Balance update error: " + balError.message);
+        return;
+      }
+
+      currentUser.balance = newBal;
+      document.getElementById('walletBal').innerText = newBal.toFixed(2);
+
+      const { error: planError } = await client.from('user_plans').insert([
+        {
+          user_phone: currentUser.phone,
+          plan_name: name,
+          plan_price: price,
+          daily_income: dailyIncome,
+          total_days: days,
+          claimed_days: 0
+        }
+      ]);
+
+      if(planError) {
+        alert("Plan activation error: " + planError.message);
+      } else {
+        alert(`Badhai ho! "${name}" safalta-purvak activate ho gaya hai.`);
+        loadUserPlans();
+      }
+    }
+
+    async function loadUserPlans() {
+      const { data: plans, error } = await client.from('user_plans').select('*').eq('user_phone', currentUser.phone).order('id', { ascending: false });
+      const container = document.getElementById('myPlansList');
+      if(!plans || plans.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-500 text-center py-2">Abhi tak koi plan active nahi hai.</p>`;
+        return;
+      }
+
+      container.innerHTML = plans.map(p => {
+        const isCompleted = p.claimed_days >= p.total_days;
+        return `
+          <div class="bg-slate-950 border border-slate-800 p-3 rounded-xl flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-white">${p.plan_name}</p>
+              <p class="text-[10px] text-emerald-400 font-semibold">+₹${p.daily_income}/din (Progress: ${p.claimed_days}/${p.total_days} din)</p>
+            </div>
+            <div>
+              ${isCompleted 
+                ? '<span class="text-[10px] bg-slate-800 text-slate-400 px-2.5 py-1 rounded-md">Completed</span>' 
+                : `<button onclick="claimPlanDaily(${p.id},${p.daily_income})" class="bg-amber-400 hover:bg-amber-500 text-slate-950 text-xs px-3 py-1.5 rounded-lg font-bold">Claim ₹${p.daily_income}</button>`
+              }
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function claimPlanDaily(planId, income) {
+      const { data: plan } = await client.from('user_plans').select('*').eq('id', planId).single();
+      if(!plan) return;
+
+      if(plan.last_claimed_at) {
+        const last = new Date(plan.last_claimed_at).getTime();
+        const now = new Date().getTime();
+        const diffHours = (now - last) / (1000 * 60 * 60);
+        if(diffHours < 24) {
+          const waitHours = Math.ceil(24 - diffHours);
+          alert(`Aapne aaj ki income claim kar li hai! Agli claim ${waitHours} ghante baad aayegi.`);
+          return;
+        }
+      }
+
+      const newClaimed = (plan.claimed_days || 0) + 1;
+      const { error: pErr } = await client.from('user_plans').update({
+        claimed_days: newClaimed,
+        last_claimed_at: new Date().toISOString()
+      }).eq('id', planId);
+
+      if(!pErr) {
+        const newBal = parseFloat(currentUser.balance || 0) + income;
+        await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
+        currentUser.balance = newBal;
+        document.getElementById('walletBal').innerText = newBal.toFixed(2);
+        alert(`₹${income} successfully aapke wallet me add ho gaye!`);
+        loadUserPlans();
       }
     }
 
     function logout() {
       localStorage.removeItem('solar_phone');
       location.reload();
-    }
-
-    async function claimBonus(amount, taskName) {
-      if(!currentUser) return;
-      const newBal = parseFloat(currentUser.balance) + amount;
-      const { error } = await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
-      if(!error) {
-        currentUser.balance = newBal;
-        document.getElementById('walletBal').innerText = newBal.toFixed(2);
-        alert(`Badhai ho! ₹${amount} aapke wallet mein jud gaye (${taskName}).`);
-      } else {
-        alert("Task reward error: " + error.message);
-      }
-    }
-
-    async function submitDeposit() {
-      const amount = document.getElementById('depositAmount').value;
-      const utr = document.getElementById('depositUTR').value.trim();
-
-      if(!amount || utr.length < 8) {
-        alert("Valid amount aur UTR number enter karein.");
-        return;
-      }
-
-      const { error } = await client.from('transactions').insert([
-        { user_phone: currentUser.phone, amount: amount, utr: utr, type: 'deposit', status: 'pending' }
-      ]);
-
-      if(error) {
-        alert("Error: " + error.message);
-      } else {
-        alert("Deposit request submit ho gayi hai! Admin verification ke baad balance add ho jayega.");
-        closeModal('depositModal');
-      }
-    }
-
-    async function submitWithdraw() {
-      const amount = parseFloat(document.getElementById('withdrawAmount').value);
-      const upi = document.getElementById('withdrawUPI').value.trim();
-
-      if(!amount || amount < 200) {
-        alert("Minimum withdrawal limit ₹200 hai.");
-        return;
-      }
-      if(amount > currentUser.balance) {
-        alert("Aapke paas paryapt balance nahi hai.");
-        return;
-      }
-      if(!upi) {
-        alert("UPI ID enter karein.");
-        return;
-      }
-
-      const newBal = currentUser.balance - amount;
-      await client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone);
-      currentUser.balance = newBal;
-      document.getElementById('walletBal').innerText = newBal.toFixed(2);
-
-      await client.from('transactions').insert([
-        { user_phone: currentUser.phone, amount: amount, upi_id: upi, type: 'withdraw', status: 'pending' }
-      ]);
-
-      alert("Withdrawal request lag gayi hai. Payout process hone par notify kiya jayega.");
-      closeModal('withdrawModal');
     }
 
     function copyReferralLink() {
@@ -326,7 +313,7 @@
 
     function shareOnWhatsApp() {
       const link = window.location.origin + window.location.pathname + "?ref=" + currentUser.referral_code;
-      const text = encodeURIComponent(`The Solar Invest platform join karein aur roz tasks complete karke earn karein!\nLink: ${link}`);
+      const text = encodeURIComponent(`The Solar Invest platform join karein aur ₹290 / ₹399 ke daily income plan se earn karein!\nLink: ${link}`);
       window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
     }
   </script>
