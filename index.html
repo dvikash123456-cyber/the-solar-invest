@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>The Solar Invest - Clean Energy Assets</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -73,7 +73,7 @@
           <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono uppercase">
         </div>
         
-        <button id="authBtn" onclick="fastLogin()" type="button" class="w-full gold-gradient text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-2">
+        <button id="authBtn" onclick="fastLogin()" ontouchend="fastLogin()" type="button" class="w-full gold-gradient text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-3 cursor-pointer">
           Continue to Dashboard
         </button>
       </div>
@@ -81,7 +81,7 @@
   </div>
 
   <!-- DASHBOARD CONTAINER -->
-  <main id="mainDashboard" class="hidden p-4 max-w-md mx-auto space-y-4">
+  <main id="mainDashboard" style="display: none;" class="p-4 max-w-md mx-auto space-y-4">
 
     <!-- TAB 1: HOME -->
     <div id="tab-home" class="space-y-4 tab-content">
@@ -91,7 +91,7 @@
             <p class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Total Portfolio Balance</p>
             <h2 class="text-3xl font-black text-white mt-1">₹<span id="homeWalletBal">0.00</span></h2>
           </div>
-          <button onclick="switchTab('wallet')" class="text-xs bg-amber-400/10 text-amber-300 px-3 py-1.5 rounded-xl border border-amber-400/20 font-bold">
+          <button onclick="switchTab('wallet')" type="button" class="text-xs bg-amber-400/10 text-amber-300 px-3 py-1.5 rounded-xl border border-amber-400/20 font-bold">
             Wallet <i class="fa-solid fa-arrow-right ml-1"></i>
           </button>
         </div>
@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-          <button onclick="buyPlan('Solar Mini Grid 290', 290, 300, 15)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
+          <button onclick="buyPlan('Solar Mini Grid 290', 290, 300, 15)" type="button" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
             <i class="fa-solid fa-bolt"></i> Buy Plan (₹290)
           </button>
         </div>
@@ -162,7 +162,7 @@
               </div>
             </div>
           </div>
-          <button onclick="buyPlan('Commercial Solar Array', 399, 400, 20)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
+          <button onclick="buyPlan('Commercial Solar Array', 399, 400, 20)" type="button" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
             <i class="fa-solid fa-bolt"></i> Buy Plan (₹399)
           </button>
         </div>
@@ -197,16 +197,15 @@
         </div>
 
         <div class="grid grid-cols-2 gap-2 mt-5">
-          <button onclick="openModal('depositModal')" class="gold-gradient text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+          <button onclick="openModal('depositModal')" type="button" class="gold-gradient text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
             <i class="fa-solid fa-wallet"></i> Deposit
           </button>
-          <button onclick="openModal('withdrawModal')" class="bg-[#11131c] hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+          <button onclick="openModal('withdrawModal')" type="button" class="bg-[#11131c] hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
             <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdraw
           </button>
         </div>
       </div>
 
-      <!-- Transaction History -->
       <div class="gold-card p-4 rounded-3xl space-y-3">
         <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
           <i class="fa-solid fa-clock-rotate-left text-amber-400"></i> Transaction History
@@ -257,12 +256,12 @@
             <span class="text-[9px] text-slate-500 block uppercase font-bold">Invite Code</span>
             <span id="userReferralCode" class="text-xs font-mono font-black text-amber-400">SOLAR</span>
           </div>
-          <button onclick="copyRefLink()" class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 font-bold">
+          <button onclick="copyRefLink()" type="button" class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 font-bold">
             <i class="fa-regular fa-copy mr-1"></i> Copy
           </button>
         </div>
 
-        <button onclick="sharePartnerLink()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg green-glow">
+        <button onclick="sharePartnerLink()" type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg green-glow">
           <i class="fa-brands fa-whatsapp text-sm"></i> Share via WhatsApp
         </button>
       </div>
@@ -300,7 +299,7 @@
         </div>
       </div>
 
-      <button onclick="logout()" class="w-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 font-black py-3 rounded-xl text-xs uppercase tracking-wider">
+      <button onclick="logout()" type="button" class="w-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 font-black py-3 rounded-xl text-xs uppercase tracking-wider">
         Log Out Portfolio
       </button>
     </div>
@@ -308,24 +307,24 @@
   </main>
 
   <!-- BOTTOM NAVIGATION BAR -->
-  <nav id="bottomNav" class="hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0d0f17]/95 backdrop-blur-lg border-t border-slate-800/80 px-4 py-2 max-w-md mx-auto flex justify-between items-center text-[10px] font-bold">
-    <button onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-1 text-amber-400" data-tab="home">
+  <nav id="bottomNav" style="display: none;" class="fixed bottom-0 left-0 right-0 z-40 bg-[#0d0f17]/95 backdrop-blur-lg border-t border-slate-800/80 px-4 py-2 max-w-md mx-auto flex justify-between items-center text-[10px] font-bold">
+    <button onclick="switchTab('home')" type="button" class="nav-item flex flex-col items-center gap-1 text-amber-400" data-tab="home">
       <i class="fa-solid fa-house text-sm"></i>
       <span>Home</span>
     </button>
-    <button onclick="switchTab('wallet')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="wallet">
+    <button onclick="switchTab('wallet')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="wallet">
       <i class="fa-solid fa-wallet text-sm"></i>
       <span>Wallet</span>
     </button>
-    <button onclick="switchTab('earning')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="earning">
+    <button onclick="switchTab('earning')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="earning">
       <i class="fa-solid fa-chart-pie text-sm"></i>
       <span>Earning</span>
     </button>
-    <button onclick="switchTab('refer')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="refer">
+    <button onclick="switchTab('refer')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="refer">
       <i class="fa-solid fa-user-group text-sm"></i>
       <span>Refer</span>
     </button>
-    <button onclick="switchTab('profile')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="profile">
+    <button onclick="switchTab('profile')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="profile">
       <i class="fa-solid fa-user text-sm"></i>
       <span>Profile</span>
     </button>
@@ -338,7 +337,4 @@
   </a>
 
   <!-- DEPOSIT MODAL -->
-  <div id="depositModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-    <div class="gold-card w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center">
-        <h3 class="font-extrabold text-sm text-white">Deposi
+  <div id="depositModal" class="hidden fixed inset-0 bg-black/8
