@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>The Solar Invest - Clean Energy Assets</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
@@ -44,7 +43,7 @@
     <marquee scrollamount="4">The Solar Invest me daily income plans live hain! 24/7 VIP WhatsApp support uplabdh hai.</marquee>
   </div>
 
-  <!-- AUTH SECTION (LOGIN / REGISTER) -->
+  <!-- AUTH SECTION -->
   <div id="authSection" class="p-4 max-w-sm mx-auto mt-6">
     <div class="gold-card p-6 rounded-3xl shadow-2xl relative overflow-hidden">
       <div class="text-center mb-6">
@@ -73,7 +72,7 @@
           <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono uppercase">
         </div>
         
-        <button id="authBtn" onclick="fastLogin()" ontouchend="fastLogin()" type="button" class="w-full gold-gradient text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-3 cursor-pointer">
+        <button id="submitLoginBtn" class="w-full gold-gradient text-slate-950 font-black py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-3">
           Continue to Dashboard
         </button>
       </div>
@@ -91,7 +90,7 @@
             <p class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Total Portfolio Balance</p>
             <h2 class="text-3xl font-black text-white mt-1">₹<span id="homeWalletBal">0.00</span></h2>
           </div>
-          <button onclick="switchTab('wallet')" type="button" class="text-xs bg-amber-400/10 text-amber-300 px-3 py-1.5 rounded-xl border border-amber-400/20 font-bold">
+          <button onclick="switchTab('wallet')" class="text-xs bg-amber-400/10 text-amber-300 px-3 py-1.5 rounded-xl border border-amber-400/20 font-bold">
             Wallet <i class="fa-solid fa-arrow-right ml-1"></i>
           </button>
         </div>
@@ -137,7 +136,7 @@
               </div>
             </div>
           </div>
-          <button onclick="buyPlan('Solar Mini Grid 290', 290, 300, 15)" type="button" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
+          <button onclick="buyPlan('Solar Mini Grid 290', 290, 300, 15)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
             <i class="fa-solid fa-bolt"></i> Buy Plan (₹290)
           </button>
         </div>
@@ -162,7 +161,7 @@
               </div>
             </div>
           </div>
-          <button onclick="buyPlan('Commercial Solar Array', 399, 400, 20)" type="button" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
+          <button onclick="buyPlan('Commercial Solar Array', 399, 400, 20)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
             <i class="fa-solid fa-bolt"></i> Buy Plan (₹399)
           </button>
         </div>
@@ -197,10 +196,10 @@
         </div>
 
         <div class="grid grid-cols-2 gap-2 mt-5">
-          <button onclick="openModal('depositModal')" type="button" class="gold-gradient text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+          <button onclick="openModal('depositModal')" class="gold-gradient text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
             <i class="fa-solid fa-wallet"></i> Deposit
           </button>
-          <button onclick="openModal('withdrawModal')" type="button" class="bg-[#11131c] hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+          <button onclick="openModal('withdrawModal')" class="bg-[#11131c] hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
             <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdraw
           </button>
         </div>
@@ -256,12 +255,12 @@
             <span class="text-[9px] text-slate-500 block uppercase font-bold">Invite Code</span>
             <span id="userReferralCode" class="text-xs font-mono font-black text-amber-400">SOLAR</span>
           </div>
-          <button onclick="copyRefLink()" type="button" class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 font-bold">
+          <button onclick="copyRefLink()" class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 font-bold">
             <i class="fa-regular fa-copy mr-1"></i> Copy
           </button>
         </div>
 
-        <button onclick="sharePartnerLink()" type="button" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg green-glow">
+        <button onclick="sharePartnerLink()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg green-glow">
           <i class="fa-brands fa-whatsapp text-sm"></i> Share via WhatsApp
         </button>
       </div>
@@ -299,7 +298,7 @@
         </div>
       </div>
 
-      <button onclick="logout()" type="button" class="w-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 font-black py-3 rounded-xl text-xs uppercase tracking-wider">
+      <button onclick="logout()" class="w-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 font-black py-3 rounded-xl text-xs uppercase tracking-wider">
         Log Out Portfolio
       </button>
     </div>
@@ -308,23 +307,23 @@
 
   <!-- BOTTOM NAVIGATION BAR -->
   <nav id="bottomNav" style="display: none;" class="fixed bottom-0 left-0 right-0 z-40 bg-[#0d0f17]/95 backdrop-blur-lg border-t border-slate-800/80 px-4 py-2 max-w-md mx-auto flex justify-between items-center text-[10px] font-bold">
-    <button onclick="switchTab('home')" type="button" class="nav-item flex flex-col items-center gap-1 text-amber-400" data-tab="home">
+    <button onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-1 text-amber-400" data-tab="home">
       <i class="fa-solid fa-house text-sm"></i>
       <span>Home</span>
     </button>
-    <button onclick="switchTab('wallet')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="wallet">
+    <button onclick="switchTab('wallet')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="wallet">
       <i class="fa-solid fa-wallet text-sm"></i>
       <span>Wallet</span>
     </button>
-    <button onclick="switchTab('earning')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="earning">
+    <button onclick="switchTab('earning')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="earning">
       <i class="fa-solid fa-chart-pie text-sm"></i>
       <span>Earning</span>
     </button>
-    <button onclick="switchTab('refer')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="refer">
+    <button onclick="switchTab('refer')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="refer">
       <i class="fa-solid fa-user-group text-sm"></i>
       <span>Refer</span>
     </button>
-    <button onclick="switchTab('profile')" type="button" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="profile">
+    <button onclick="switchTab('profile')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="profile">
       <i class="fa-solid fa-user text-sm"></i>
       <span>Profile</span>
     </button>
@@ -337,4 +336,191 @@
   </a>
 
   <!-- DEPOSIT MODAL -->
-  <div id="depositModal" class="hidden fixed inset-0 bg-black/8
+  <div id="depositModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="gold-card w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-extrabold text-sm text-white">Deposit Funds</h3>
+        <button onclick="closeModal('depositModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="text-slate-400">Amount (₹)</label>
+          <input id="depositAmount" type="number" placeholder="290 ya 399" class="w-full bg-[#11131c] border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
+        </div>
+        <div>
+          <label class="text-slate-400">Transaction / UTR Number</label>
+          <input id="depositUTR" type="text" placeholder="12-digit UTR" class="w-full bg-[#11131c] border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
+        </div>
+      </div>
+      <button onclick="submitDeposit()" class="w-full gold-gradient text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider">
+        Submit Verification
+      </button>
+    </div>
+  </div>
+
+  <!-- WITHDRAW MODAL -->
+  <div id="withdrawModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="gold-card w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-extrabold text-sm text-white">Request Withdrawal</h3>
+        <button onclick="closeModal('withdrawModal')" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="text-slate-400">Amount (₹)</label>
+          <input id="withdrawAmount" type="number" placeholder="Min. ₹200" class="w-full bg-[#11131c] border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
+        </div>
+        <div>
+          <label class="text-slate-400">UPI Address</label>
+          <input id="withdrawUPI" type="text" placeholder="mobile@upi" class="w-full bg-[#11131c] border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
+        </div>
+      </div>
+      <button onclick="submitWithdraw()" class="w-full bg-slate-100 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider">
+        Confirm Payout
+      </button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    let client = null;
+    try {
+      if (window.supabase) {
+        client = window.supabase.createClient(
+          "https://puhjkcduenvztfjhwvho.supabase.co",
+          "sb_publishable_F6VJHXWv-1qxAaCnc5vrMA_eKsdiFtC"
+        );
+      }
+    } catch(e) { console.error(e); }
+
+    let currentUser = null;
+
+    // DIRECT CLICK LISTENER (Bina kisi event fail ke turant switch)
+    document.getElementById('submitLoginBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const phoneInput = document.getElementById('authPhone');
+      const nameInput = document.getElementById('authName');
+      
+      const phone = phoneInput ? phoneInput.value.trim() : '';
+      const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Vikash';
+
+      if (!phone || phone.length < 10) {
+        alert("Kripya 10-digit mobile number dalein!");
+        return;
+      }
+
+      // TURANT SCREEN BADLO
+      document.getElementById('authSection').style.setProperty('display', 'none', 'important');
+      document.getElementById('mainDashboard').style.setProperty('display', 'block', 'important');
+      document.getElementById('bottomNav').style.setProperty('display', 'flex', 'important');
+      document.getElementById('headerUserInfo').classList.remove('hidden');
+
+      currentUser = {
+        phone: phone,
+        full_name: name,
+        balance: parseFloat(localStorage.getItem('solar_bal') || 0),
+        total_earning: parseFloat(localStorage.getItem('solar_total_earn') || 0),
+        today_earning: 0,
+        total_deposit: 0,
+        referral_code: 'SOLAR' + phone.slice(-4),
+        referral_count: 0
+      };
+
+      localStorage.setItem('solar_phone', phone);
+      localStorage.setItem('solar_name', name);
+
+      updateDisplayData();
+
+      // Background DB Sync
+      if (client) {
+        client.from('profiles').select('*').eq('phone', phone).maybeSingle()
+          .then(res => {
+            if (res.data) {
+              currentUser = res.data;
+              updateDisplayData();
+            } else {
+              client.from('profiles').insert([{
+                phone: phone,
+                full_name: name,
+                referral_code: currentUser.referral_code,
+                balance: 0
+              }]).then();
+            }
+          }).catch(err => console.log(err));
+      }
+    });
+
+    function updateDisplayData() {
+      if(!currentUser) return;
+      document.getElementById('headerUserName').innerText = currentUser.full_name || 'Vikash';
+      document.getElementById('headerAvatar').innerText = (currentUser.full_name || 'V').charAt(0).toUpperCase();
+      document.getElementById('profileAvatarBig').innerText = (currentUser.full_name || 'V').charAt(0).toUpperCase();
+      document.getElementById('profileFullName').innerText = currentUser.full_name || 'Vikash';
+      document.getElementById('profilePhoneNumber').innerText = "+91 " + currentUser.phone;
+
+      const bal = parseFloat(currentUser.balance || 0).toFixed(2);
+      const totalEarn = parseFloat(currentUser.total_earning || 0).toFixed(2);
+
+      document.getElementById('homeWalletBal').innerText = bal;
+      document.getElementById('walletTabBal').innerText = bal;
+      document.getElementById('homeTotalRevenue').innerText = totalEarn;
+      document.getElementById('walletTotalEarned').innerText = totalEarn;
+      document.getElementById('tabCumulativeEarning').innerText = totalEarn;
+      document.getElementById('userReferralCode').innerText = currentUser.referral_code || ('SOLAR' + currentUser.phone.slice(-4));
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      const activeTab = document.getElementById('tab-' + tabName);
+      if (activeTab) activeTab.classList.remove('hidden');
+
+      document.querySelectorAll('.nav-item').forEach(el => {
+        if(el.getAttribute('data-tab') === tabName) {
+          el.classList.remove('text-slate-400');
+          el.classList.add('text-amber-400');
+        } else {
+          el.classList.remove('text-amber-400');
+          el.classList.add('text-slate-400');
+        }
+      });
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    function buyPlan(name, price, dailyIncome, days) {
+      alert("Aapka wallet balance ₹0 hai. Pehle 'Deposit' karein!");
+      openModal('depositModal');
+    }
+
+    function submitDeposit() {
+      alert("Deposit request submitted! Verification ke baad balance update ho jayega.");
+      closeModal('depositModal');
+    }
+
+    function submitWithdraw() {
+      alert("Withdrawal request recorded!");
+      closeModal('withdrawModal');
+    }
+
+    function copyRefLink() {
+      const code = currentUser ? currentUser.referral_code : 'SOLAR';
+      navigator.clipboard.writeText(window.location.origin + '?ref=' + code);
+      alert("Referral link copied!");
+    }
+
+    function sharePartnerLink() {
+      const code = currentUser ? currentUser.referral_code : 'SOLAR';
+      const link = window.location.origin + '?ref=' + code;
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('Join The Solar Invest: ' + link), '_blank');
+    }
+
+    function logout() {
+      localStorage.clear();
+      location.reload();
+    }
+  </script>
+</body>
+</html>
