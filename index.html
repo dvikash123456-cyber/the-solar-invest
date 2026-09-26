@@ -3,526 +3,345 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Solar Invest</title>
+  <title>The Solar Invest - Premium Solar Asset Management</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+    .gold-card { background: linear-gradient(145deg, #18181b 0%, #09090b 100%); border: 1px solid rgba(245, 158, 11, 0.2); }
+    .green-glow { box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.4); }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen pb-24 font-sans antialiased">
+<body class="bg-[#090a0f] text-slate-100 min-h-screen pb-24 antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- Header -->
-  <header class="bg-slate-900 border-b border-slate-800 p-4 sticky top-0 z-40 flex justify-between items-center shadow-lg">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-amber-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-md">
-        <i class="fa-solid fa-solar-panel"></i>
+  <!-- TOP HEADER -->
+  <header class="bg-[#11131c]/90 backdrop-blur-md border-b border-amber-500/20 px-4 py-3 sticky top-0 z-40 flex justify-between items-center shadow-lg">
+    <div class="flex items-center gap-2.5">
+      <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20">
+        <i class="fa-solid fa-solar-panel text-lg"></i>
       </div>
       <div>
-        <h1 class="text-base font-extrabold text-amber-400 tracking-wide leading-none">The Solar Invest</h1>
-        <p class="text-[10px] text-emerald-400 font-semibold tracking-wider mt-1 flex items-center gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> ONLINE SYSTEM
-        </p>
+        <h1 class="text-sm font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500">THE SOLAR INVEST</h1>
+        <p class="text-[9px] text-amber-500/80 font-bold tracking-widest uppercase">Verified Clean Energy</p>
       </div>
     </div>
     
-    <div id="userHeaderBadge" class="hidden text-right">
-      <div class="text-xs font-bold text-white flex items-center gap-1.5 justify-end">
-        <i class="fa-solid fa-circle-user text-amber-400 text-sm"></i>
-        <span id="headerName">User</span>
+    <div id="headerUserInfo" class="hidden flex items-center gap-2">
+      <div class="text-right">
+        <div id="headerUserName" class="text-xs font-bold text-slate-200">User</div>
+        <div id="userLevelBadge" class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 inline-block font-bold">LEVEL 1</div>
       </div>
-      <p id="headerPhone" class="text-[10px] text-slate-400 font-mono"></p>
+      <div class="w-8 h-8 rounded-full gold-gradient text-slate-950 flex items-center justify-center font-bold text-xs">
+        <span id="headerAvatar">U</span>
+      </div>
     </div>
   </header>
 
-  <!-- Notice -->
-  <div class="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5 text-xs text-amber-300 flex items-center gap-2">
-    <i class="fa-solid fa-bullhorn text-xs text-amber-400"></i>
-    <marquee scrollamount="4">The Solar Invest me daily income plans live hain! 24/7 VIP WhatsApp support uplabdh hai.</marquee>
-  </div>
-
-  <!-- AUTH SECTION -->
+  <!-- AUTH SECTION (LOGIN / REGISTER) -->
   <div id="authSection" class="p-4 max-w-sm mx-auto mt-6">
-    <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl shadow-2xl">
-      <div class="text-center mb-5">
-        <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto mb-2 text-2xl">
-          <i class="fa-solid fa-user-shield"></i>
-        </div>
-        <h2 class="text-xl font-black text-white">Login / Register</h2>
-        <p class="text-xs text-slate-400 mt-1">Apna naam aur 10 digit mobile number dalein.</p>
-      </div>
+    <div class="gold-card p-6 rounded-3xl shadow-2xl relative overflow-hidden">
+      <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
       
+      <div class="text-center mb-6">
+        <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto mb-2 text-xl border border-amber-400/20">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h2 class="text-lg font-black text-white">Client Portal</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Mobile number aur password enter karein</p>
+      </div>
+
       <div class="space-y-3.5">
         <div>
-          <label class="text-xs font-semibold text-slate-300">Aapka Naam (Full Name)</label>
-          <input id="authName" type="text" placeholder="e.g. Vikash" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1">
+          <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Aapka Naam (Full Name)</label>
+          <input id="authName" type="text" placeholder="e.g. Vikash Kumar" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1">
         </div>
         <div>
-          <label class="text-xs font-semibold text-slate-300">Mobile Number (10 Digits)</label>
-          <input id="authPhone" type="tel" maxlength="10" placeholder="e.g. 9559032116" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
+          <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Mobile Number</label>
+          <input id="authPhone" type="tel" maxlength="10" placeholder="10-digit number" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
         </div>
         <div>
-          <label class="text-xs font-semibold text-slate-300">Referral Code (Optional)</label>
-          <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
+          <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Password</label>
+          <input id="authPass" type="password" placeholder="Min. 4 characters" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
         </div>
-        <button id="loginBtn" onclick="doDirectLogin()" type="button" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-black py-3 rounded-xl text-sm transition mt-2 shadow-lg shadow-amber-400/20 active:scale-95">
-          Continue to Dashboard
+        <div>
+          <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Referral Code (Optional)</label>
+          <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono uppercase">
+        </div>
+        
+        <button id="authBtn" onclick="handleAuthAction()" class="w-full gold-gradient text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-2">
+          Login / Register
         </button>
       </div>
     </div>
   </div>
 
-  <!-- MAIN DASHBOARD -->
+  <!-- DASHBOARD CONTAINER -->
   <main id="mainDashboard" class="hidden p-4 max-w-md mx-auto space-y-4">
-    
-    <!-- Profile & Wallet Card -->
-    <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 border border-slate-800 p-5 rounded-3xl shadow-xl">
-      <div class="flex justify-between items-start">
-        <div class="flex items-center gap-3">
-          <div class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center text-xl font-black">
-            <span id="avatarLetter">U</span>
+
+    <!-- TAB 1: HOME (PORTFOLIO & PRODUCTS) -->
+    <div id="tab-home" class="space-y-4 tab-content">
+      
+      <!-- Wallet Quick Overview -->
+      <div class="gold-card p-5 rounded-3xl shadow-xl relative overflow-hidden">
+        <div class="flex justify-between items-start">
+          <div>
+            <p class="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Total Portfolio Balance</p>
+            <h2 class="text-3xl font-black text-white mt-1">₹<span id="homeWalletBal">0.00</span></h2>
+          </div>
+          <button onclick="switchTab('wallet')" class="text-xs bg-amber-400/10 text-amber-300 px-3 py-1.5 rounded-xl border border-amber-400/20 font-bold">
+            Wallet <i class="fa-solid fa-arrow-right ml-1"></i>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-slate-800">
+          <div class="bg-black/30 p-2.5 rounded-xl border border-slate-800/60">
+            <span class="text-[10px] text-slate-400 block font-semibold">Today's Profit</span>
+            <span class="text-emerald-400 font-bold text-sm">+₹<span id="homeTodayEarning">0.00</span></span>
+          </div>
+          <div class="bg-black/30 p-2.5 rounded-xl border border-slate-800/60">
+            <span class="text-[10px] text-slate-400 block font-semibold">Total Revenue</span>
+            <span class="text-amber-400 font-bold text-sm">₹<span id="homeTotalRevenue">0.00</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Verified Solar Investment Products -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between px-1">
+          <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-sun text-amber-400"></i> High-Yield Solar Projects
+          </h3>
+          <span class="text-[9px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20 font-black">SECURE</span>
+        </div>
+
+        <!-- Product 1: ₹290 Plan -->
+        <div class="gold-card p-4 rounded-3xl relative overflow-hidden flex flex-col gap-3">
+          <div class="flex gap-3 items-center">
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-2xl flex-shrink-0">
+              <i class="fa-solid fa-solar-panel"></i>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="font-extrabold text-sm text-white">Solar Mini Grid 290</h4>
+                  <p class="text-[10px] text-slate-400 font-medium">Decentralized Clean Energy</p>
+                </div>
+                <span class="text-lg font-black text-amber-400 font-mono">₹290</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-2 text-[10px]">
+                <div class="text-slate-300 font-medium">Daily Profit: <span class="text-emerald-400 font-bold">₹300/Day</span></div>
+                <div class="text-slate-300 font-medium">Duration: <span class="text-white font-bold">15 Din</span></div>
+              </div>
+            </div>
+          </div>
+          <button onclick="buyPlan('Solar Mini Grid 290', 290, 300, 15)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bolt"></i> Buy Plan (₹290)
+          </button>
+        </div>
+
+        <!-- Product 2: ₹399 Plan -->
+        <div class="gold-card p-4 rounded-3xl relative overflow-hidden flex flex-col gap-3">
+          <div class="flex gap-3 items-center">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl flex-shrink-0">
+              <i class="fa-solid fa-industry"></i>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h4 class="font-extrabold text-sm text-white">Commercial Solar Array</h4>
+                  <p class="text-[10px] text-slate-400 font-medium">Utility Scale Generation</p>
+                </div>
+                <span class="text-lg font-black text-emerald-400 font-mono">₹399</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-2 text-[10px]">
+                <div class="text-slate-300 font-medium">Daily Profit: <span class="text-emerald-400 font-bold">₹400/Day</span></div>
+                <div class="text-slate-300 font-medium">Duration: <span class="text-white font-bold">20 Din</span></div>
+              </div>
+            </div>
+          </div>
+          <button onclick="buyPlan('Commercial Solar Array', 399, 400, 20)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider green-glow transition active:scale-95 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-bolt"></i> Buy Plan (₹399)
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Investment Plans -->
+      <div class="gold-card p-4 rounded-3xl space-y-3">
+        <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
+          <i class="fa-solid fa-chart-line text-amber-400"></i> Active Projects
+        </h3>
+        <div id="activePlansContainer" class="space-y-2">
+          <p class="text-xs text-slate-500 text-center py-4">Koi plan activate nahi hai.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: WALLET -->
+    <div id="tab-wallet" class="hidden space-y-4 tab-content">
+      <div class="gold-card p-5 rounded-3xl shadow-xl">
+        <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Available Liquidity</p>
+        <h2 class="text-3xl font-black text-amber-400 mt-1">₹<span id="walletTabBal">0.00</span></h2>
+        
+        <div class="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-slate-800">
+          <div>
+            <span class="text-[10px] text-slate-400 block font-semibold">Total Deposit</span>
+            <span class="text-white font-bold text-sm">₹<span id="walletTotalDeposit">0.00</span></span>
           </div>
           <div>
-            <h3 id="profileNameDisplay" class="text-base font-bold text-white">User</h3>
-            <p id="profilePhoneDisplay" class="text-xs text-slate-400 font-mono"></p>
+            <span class="text-[10px] text-slate-400 block font-semibold">Total Earning</span>
+            <span class="text-emerald-400 font-bold text-sm">₹<span id="walletTotalEarned">0.00</span></span>
           </div>
         </div>
-        <button onclick="logout()" class="text-xs text-rose-400 bg-rose-500/10 px-2.5 py-1.5 rounded-xl border border-rose-500/20">
-          <i class="fa-solid fa-power-off mr-1"></i> Exit
-        </button>
-      </div>
 
-      <div class="mt-5 pt-4 border-t border-slate-800 flex justify-between items-end">
-        <div>
-          <p class="text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Wallet Balance</p>
-          <h2 class="text-3xl font-black text-amber-400 mt-0.5">₹<span id="walletBal">0.00</span></h2>
-        </div>
-        <div class="flex gap-2">
-          <button onclick="openModal('depositModal')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 shadow-md">
-            <i class="fa-solid fa-plus-circle"></i> Add Cash
+        <div class="grid grid-cols-2 gap-2 mt-5">
+          <button onclick="openModal('depositModal')" class="gold-gradient text-slate-950 font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+            <i class="fa-solid fa-wallet"></i> Deposit
           </button>
-          <button onclick="openModal('withdrawModal')" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-3 py-2 rounded-xl text-xs flex items-center gap-1.5 border border-slate-700">
-            <i class="fa-solid fa-arrow-down"></i> Withdraw
+          <button onclick="openModal('withdrawModal')" class="bg-[#11131c] hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold py-2.5 rounded-xl text-xs flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i> Withdraw
           </button>
         </div>
       </div>
+
+      <!-- Transaction History -->
+      <div class="gold-card p-4 rounded-3xl space-y-3">
+        <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
+          <i class="fa-solid fa-clock-rotate-left text-amber-400"></i> Transaction History
+        </h3>
+        <div id="transactionHistoryList" class="space-y-2">
+          <p class="text-xs text-slate-500 text-center py-4">No recent transactions recorded.</p>
+        </div>
+      </div>
     </div>
 
-    <!-- PRODUCTS / PLANS -->
-    <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl space-y-3">
-      <div class="flex items-center justify-between">
-        <h3 class="font-extrabold text-sm text-white"><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> Solar Investment Projects</h3>
-        <span class="text-[10px] bg-amber-400/10 text-amber-300 px-2 py-0.5 rounded-md border border-amber-400/20 font-bold">VERIFIED</span>
+    <!-- TAB 3: DAILY EARNING -->
+    <div id="tab-earning" class="hidden space-y-4 tab-content">
+      <div class="gold-card p-5 rounded-3xl shadow-xl">
+        <span class="text-[10px] text-emerald-400 font-bold tracking-wider uppercase">Today's Credited Earning</span>
+        <h2 class="text-3xl font-black text-white mt-1">₹<span id="tabTodayEarning">0.00</span></h2>
+        
+        <div class="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+          <span class="text-slate-400 font-medium">Cumulative Total:</span>
+          <span class="text-amber-400 font-black font-mono">₹<span id="tabCumulativeEarning">0.00</span></span>
+        </div>
       </div>
 
-      <!-- Plan 1: 290 -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex flex-col gap-3">
-        <div class="flex gap-3 items-center">
-          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
-            <i class="fa-solid fa-sun"></i>
-          </div>
-          <div class="flex-1">
-            <div class="flex justify-between items-start">
-              <h4 class="font-bold text-sm text-white">Solar Mini Unit</h4>
-              <span class="text-base font-black text-amber-400">₹290</span>
-            </div>
-            <p class="text-[11px] text-slate-300">Daily Income: <span class="text-emerald-400 font-bold">₹300 / Day</span></p>
-            <p class="text-[11px] text-slate-400">Duration: 15 Din (Total: ₹4,500)</p>
-          </div>
+      <!-- Date-wise Earning History -->
+      <div class="gold-card p-4 rounded-3xl space-y-3">
+        <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
+          <i class="fa-solid fa-calendar-check text-emerald-400"></i> Daily Earning Ledger
+        </h3>
+        <div id="dailyEarningLedger" class="space-y-2">
+          <p class="text-xs text-slate-500 text-center py-4">Koi credit history available nahi hai.</p>
         </div>
-        <button onclick="buyPlan('Solar Mini Unit', 290, 300, 15)" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-black py-2.5 rounded-xl text-xs shadow-md">
-          Invest Now (₹290)
+      </div>
+    </div>
+
+    <!-- TAB 4: REFERRAL SYSTEM -->
+    <div id="tab-refer" class="hidden space-y-4 tab-content">
+      <div class="gold-card p-5 rounded-3xl shadow-xl space-y-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="text-sm font-black text-white">Partner Program</h3>
+            <p class="text-[10px] text-slate-400">1% volume commission on eligible deposits</p>
+          </div>
+          <span id="referralLevelText" class="text-xs bg-amber-400/10 text-amber-400 px-2.5 py-1 rounded-xl border border-amber-400/20 font-black">
+            LEVEL 1
+          </span>
+        </div>
+
+        <!-- Referral Link Share Box -->
+        <div class="bg-[#11131c] p-3 rounded-2xl border border-slate-800 flex justify-between items-center">
+          <div>
+            <span class="text-[9px] text-slate-500 block uppercase font-bold">Invite Code</span>
+            <span id="userReferralCode" class="text-xs font-mono font-black text-amber-400">SOLAR</span>
+          </div>
+          <button onclick="copyRefLink()" class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700 font-bold">
+            <i class="fa-regular fa-copy mr-1"></i> Copy
+          </button>
+        </div>
+
+        <button onclick="sharePartnerLink()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg green-glow">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Share via WhatsApp
         </button>
       </div>
 
-      <!-- Plan 2: 399 -->
-      <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl flex flex-col gap-3">
-        <div class="flex gap-3 items-center">
-          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl flex-shrink-0">
-            <i class="fa-solid fa-industry"></i>
-          </div>
-          <div class="flex-1">
-            <div class="flex justify-between items-start">
-              <h4 class="font-bold text-sm text-white">Solar Super Array</h4>
-              <span class="text-base font-black text-emerald-400">₹399</span>
-            </div>
-            <p class="text-[11px] text-slate-300">Daily Income: <span class="text-emerald-400 font-bold">₹400 / Day</span></p>
-            <p class="text-[11px] text-slate-400">Duration: 20 Din (Total: ₹8,000)</p>
-          </div>
+      <!-- Referral Metrics -->
+      <div class="grid grid-cols-2 gap-2.5">
+        <div class="gold-card p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 block font-semibold">Total Referrals</span>
+          <span id="metricTotalRef" class="text-lg font-black text-white font-mono">0</span>
         </div>
-        <button onclick="buyPlan('Solar Super Array', 399, 400, 20)" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black py-2.5 rounded-xl text-xs shadow-md">
-          Invest Now (₹399)
-        </button>
+        <div class="gold-card p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 block font-semibold">Successful Ref</span>
+          <span id="metricSuccessRef" class="text-lg font-black text-emerald-400 font-mono">0</span>
+        </div>
+        <div class="gold-card p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 block font-semibold">1% Commission</span>
+          <span class="text-lg font-black text-amber-400 font-mono">₹<span id="metricCommission">0.00</span></span>
+        </div>
+        <div class="gold-card p-3 rounded-2xl">
+          <span class="text-[10px] text-slate-400 block font-semibold">Referral Bonus</span>
+          <span class="text-lg font-black text-amber-400 font-mono">₹<span id="metricBonus">0.00</span></span>
+        </div>
+      </div>
+
+      <!-- Partner Rules -->
+      <div class="gold-card p-4 rounded-3xl space-y-2 text-[11px] text-slate-400">
+        <h4 class="font-bold text-slate-200 uppercase text-[10px] text-amber-400">Commission & Level Structure</h4>
+        <p>• <b>Level 1 (0-5 Ref):</b> 1% transaction commission.</p>
+        <p>• <b>Level 2 (6-15 Ref):</b> 1% commission + Tier 2 milestone rewards.</p>
+        <p>• <b>Level 3 (16+ Ref):</b> VIP status + eligible partner incentives.</p>
+        <p class="text-[10px] text-slate-500 italic">*Bonuses and commissions are strictly calculated automatically on actual eligible transactions.</p>
       </div>
     </div>
 
-    <!-- ACTIVE PLANS -->
-    <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl">
-      <h3 class="font-bold text-sm text-white mb-2.5 flex items-center gap-2">
-        <i class="fa-solid fa-boxes-stacked text-sky-400"></i> Mere Active Plans
-      </h3>
-      <div id="myPlansList" class="space-y-2">
-        <p class="text-xs text-slate-500 text-center py-3">Abhi tak koi plan active nahi hai.</p>
-      </div>
-    </div>
-
-    <!-- Refer & Earn -->
-    <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl">
-      <h3 class="font-bold text-sm text-white mb-1"><i class="fa-solid fa-share-nodes text-emerald-400 mr-1.5"></i> Referral Program</h3>
-      <p class="text-xs text-slate-400 mb-3">Apne referral link ko share karein.</p>
-      
-      <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 flex items-center justify-between gap-2 mb-3">
+    <!-- TAB 5: PROFILE -->
+    <div id="tab-profile" class="hidden space-y-4 tab-content">
+      <div class="gold-card p-5 rounded-3xl shadow-xl flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl gold-gradient text-slate-950 flex items-center justify-center text-2xl font-black shadow-lg">
+          <span id="profileAvatarBig">U</span>
+        </div>
         <div>
-          <span class="text-[10px] text-slate-500 block">Aapka Code</span>
-          <span id="refCodeText" class="text-sm text-amber-400 font-mono font-black">SOLAR</span>
+          <h3 id="profileFullName" class="font-bold text-white text-base">User Name</h3>
+          <p id="profilePhoneNumber" class="text-xs text-slate-400 font-mono mt-0.5">+91 </p>
+          <span class="inline-block mt-1 text-[9px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">ACTIVE ACCOUNT</span>
         </div>
-        <button onclick="copyReferralLink()" class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-xl border border-slate-700">
-          Copy
-        </button>
       </div>
 
-      <button onclick="shareOnWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-xs font-black flex items-center justify-center gap-2 shadow-lg">
-        <i class="fa-brands fa-whatsapp text-sm"></i> Share via WhatsApp
+      <div class="gold-card p-4 rounded-3xl space-y-3 text-xs">
+        <div class="flex justify-between py-2 border-b border-slate-800">
+          <span class="text-slate-400">Account Security</span>
+          <span class="text-emerald-400 font-bold">Password Protected</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-slate-800">
+          <span class="text-slate-400">24/7 Dedicated Manager</span>
+          <span class="text-amber-400 font-bold">+91 9559032116</span>
+        </div>
+      </div>
+
+      <button onclick="logout()" class="w-full bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-rose-400 font-black py-3 rounded-xl text-xs uppercase tracking-wider">
+        Log Out Portfolio
       </button>
     </div>
 
   </main>
 
-  <!-- FLOATING 24/7 WHATSAPP SUPPORT BUTTON -->
-  <a id="waSupportBtn" href="https://wa.me/919559032116?text=Hello%20The%20Solar%20Invest%20Support,%20mujhe%20help%20chahiye." target="_blank" class="fixed bottom-5 right-5 z-50 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-full flex items-center gap-2 shadow-2xl border-2 border-emerald-400 text-xs font-bold transition">
-    <i class="fa-brands fa-whatsapp text-lg"></i>
-    <span>24/7 Support</span>
-  </a>
-
-  <!-- DEPOSIT MODAL -->
-  <div id="depositModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center">
-        <h3 class="font-bold text-sm text-white">Deposit Cash</h3>
-        <button onclick="closeModal('depositModal')" class="text-slate-400"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="text-slate-400">Amount (₹)</label>
-          <input id="depositAmount" type="number" placeholder="290 ya 399" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-        <div>
-          <label class="text-slate-400">Payment UTR / Ref No.</label>
-          <input id="depositUTR" type="text" placeholder="12-digit UTR Number" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-      </div>
-      <button onclick="submitDeposit()" class="w-full bg-amber-400 text-slate-950 font-bold py-2.5 rounded-xl text-xs">
-        Submit Request
-      </button>
-    </div>
-  </div>
-
-  <!-- WITHDRAW MODAL -->
-  <div id="withdrawModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
-      <div class="flex justify-between items-center">
-        <h3 class="font-bold text-sm text-white">Withdrawal</h3>
-        <button onclick="closeModal('withdrawModal')" class="text-slate-400"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="space-y-3 text-xs">
-        <div>
-          <label class="text-slate-400">Amount (₹)</label>
-          <input id="withdrawAmount" type="number" placeholder="Min. ₹200" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-        <div>
-          <label class="text-slate-400">UPI ID</label>
-          <input id="withdrawUPI" type="text" placeholder="e.g. mobile@upi" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-2.5 text-white focus:outline-none focus:border-amber-400 mt-1">
-        </div>
-      </div>
-      <button onclick="submitWithdraw()" class="w-full bg-slate-100 text-slate-950 font-bold py-2.5 rounded-xl text-xs">
-        Submit Withdrawal
-      </button>
-    </div>
-  </div>
-
-  <script>
-    const SUPABASE_URL = "https://puhjkcduenvztfjhwvho.supabase.co";
-    const SUPABASE_KEY = "sb_publishable_F6VJHXWv-1qxAaCnc5vrMA_eKsdiFtC";
-    let client = null;
-
-    try {
-      if (window.supabase) {
-        client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-      }
-    } catch (e) {
-      console.error("Supabase init error:", e);
-    }
-
-    let currentUser = null;
-
-    // Auto login if already stored
-    document.addEventListener("DOMContentLoaded", function() {
-      const savedPhone = localStorage.getItem('solar_phone');
-      const savedName = localStorage.getItem('solar_name');
-      if (savedPhone) {
-        renderDashboardView({
-          phone: savedPhone,
-          full_name: savedName || 'Vikash',
-          balance: localStorage.getItem('solar_bal') || 0,
-          referral_code: 'SOLAR' + savedPhone.slice(-4)
-        });
-        if (client) syncProfile(savedPhone);
-      }
-    });
-
-    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
-    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
-
-    // Direct Login Trigger
-    function doDirectLogin() {
-      const nameInput = document.getElementById('authName');
-      const phoneInput = document.getElementById('authPhone');
-      const refInput = document.getElementById('authRef');
-
-      const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'Vikash';
-      const phone = (phoneInput && phoneInput.value.trim()) ? phoneInput.value.trim() : '';
-      const refBy = (refInput && refInput.value.trim()) ? refInput.value.trim() : '';
-
-      if (phone.length < 10) {
-        alert("Kripya 10 digit ka pura mobile number enter karein!");
-        return;
-      }
-
-      const userObj = {
-        phone: phone,
-        full_name: name,
-        balance: 0,
-        referral_code: "SOLAR" + phone.slice(-4)
-      };
-
-      // Turant UI update karo
-      localStorage.setItem('solar_phone', phone);
-      localStorage.setItem('solar_name', name);
-      renderDashboardView(userObj);
-
-      // Background me Supabase me check/insert karo
-      if (client) {
-        client.from('profiles').select('*').eq('phone', phone).maybeSingle()
-          .then(res => {
-            if (!res.data) {
-              return client.from('profiles').insert([
-                { phone: phone, full_name: name, referral_code: userObj.referral_code, referred_by: refBy || null, balance: 0 }
-              ]).select().single();
-            } else {
-              renderDashboardView(res.data);
-            }
-          })
-          .catch(err => console.log("DB sync:", err));
-      }
-    }
-
-    function renderDashboardView(user) {
-      currentUser = user;
-      const displayName = user.full_name || 'Vikash';
-      
-      const authDiv = document.getElementById('authSection');
-      const dashDiv = document.getElementById('mainDashboard');
-      const badgeDiv = document.getElementById('userHeaderBadge');
-
-      if (authDiv) authDiv.style.display = 'none';
-      if (dashDiv) {
-        dashDiv.classList.remove('hidden');
-        dashDiv.style.display = 'block';
-      }
-      if (badgeDiv) {
-        badgeDiv.classList.remove('hidden');
-        badgeDiv.style.display = 'block';
-      }
-
-      document.getElementById('headerName').innerText = displayName;
-      document.getElementById('headerPhone').innerText = user.phone;
-      document.getElementById('profileNameDisplay').innerText = displayName;
-      document.getElementById('profilePhoneDisplay').innerText = "+91 " + user.phone;
-      document.getElementById('avatarLetter').innerText = displayName.charAt(0).toUpperCase();
-
-      document.getElementById('walletBal').innerText = parseFloat(user.balance || 0).toFixed(2);
-      document.getElementById('refCodeText').innerText = user.referral_code || ("SOLAR" + user.phone.slice(-4));
-
-      loadUserPlans();
-    }
-
-    function syncProfile(phone) {
-      if(!client) return;
-      client.from('profiles').select('*').eq('phone', phone).maybeSingle()
-        .then(res => {
-          if (res.data) {
-            renderDashboardView(res.data);
-            localStorage.setItem('solar_bal', res.data.balance || 0);
-          }
-        });
-    }
-
-    function buyPlan(name, price, dailyIncome, days) {
-      if(!currentUser) return;
-      const currentBal = parseFloat(currentUser.balance || 0);
-      if(currentBal < price) {
-        alert("Aapke wallet me paryapt balance nahi hai! Pehle 'Add Cash' par click karke paise add karein.");
-        openModal('depositModal');
-        return;
-      }
-
-      if(!confirm(`Kya aap ₹${price} me "${name}" buy karna chahte hain?`)) return;
-
-      const newBal = currentBal - price;
-      currentUser.balance = newBal;
-      document.getElementById('walletBal').innerText = newBal.toFixed(2);
-      localStorage.setItem('solar_bal', newBal);
-
-      if(client) {
-        client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone).then();
-        client.from('user_plans').insert([
-          {
-            user_phone: currentUser.phone,
-            plan_name: name,
-            plan_price: price,
-            daily_income: dailyIncome,
-            total_days: days,
-            claimed_days: 0
-          }
-        ]).then(() => loadUserPlans());
-      }
-
-      alert(`Badhai ho! "${name}" activate ho gaya.`);
-    }
-
-    function loadUserPlans() {
-      if(!client || !currentUser) return;
-      client.from('user_plans').select('*').eq('user_phone', currentUser.phone).order('id', { ascending: false })
-        .then(res => {
-          const plans = res.data;
-          const container = document.getElementById('myPlansList');
-          if(!plans || plans.length === 0) {
-            container.innerHTML = `<p class="text-xs text-slate-500 text-center py-3">Abhi tak koi plan active nahi hai.</p>`;
-            return;
-          }
-
-          container.innerHTML = plans.map(p => {
-            const isCompleted = p.claimed_days >= p.total_days;
-            return `
-              <div class="bg-slate-950 border border-slate-800 p-3 rounded-2xl flex items-center justify-between">
-                <div>
-                  <p class="text-xs font-bold text-white">${p.plan_name}</p>
-                  <p class="text-[10px] text-emerald-400 font-semibold">+₹${p.daily_income}/din (${p.claimed_days}/${p.total_days} din)</p>
-                </div>
-                <div>
-                  ${isCompleted 
-                    ? '<span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-1 rounded-lg">Completed</span>' 
-                    : `<button onclick="claimPlanDaily(${p.id},${p.daily_income})" class="bg-amber-400 text-slate-950 text-xs px-3 py-1.5 rounded-xl font-bold">Claim ₹${p.daily_income}</button>`
-                  }
-                </div>
-              </div>
-            `;
-          }).join('');
-        });
-    }
-
-    function claimPlanDaily(planId, income) {
-      if(!client) return;
-      client.from('user_plans').select('*').eq('id', planId).single()
-        .then(res => {
-          const plan = res.data;
-          if(!plan) return;
-
-          if(plan.last_claimed_at) {
-            const last = new Date(plan.last_claimed_at).getTime();
-            const now = new Date().getTime();
-            const diffHours = (now - last) / (1000 * 60 * 60);
-            if(diffHours < 24) {
-              const waitHours = Math.ceil(24 - diffHours);
-              alert(`Aaj ka reward claim ho chuka hai! Agla reward ${waitHours} ghante baad aayega.`);
-              return;
-            }
-          }
-
-          const newClaimed = (plan.claimed_days || 0) + 1;
-          client.from('user_plans').update({
-            claimed_days: newClaimed,
-            last_claimed_at: new Date().toISOString()
-          }).eq('id', planId).then();
-
-          const newBal = parseFloat(currentUser.balance || 0) + income;
-          client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone).then();
-          currentUser.balance = newBal;
-          document.getElementById('walletBal').innerText = newBal.toFixed(2);
-          localStorage.setItem('solar_bal', newBal);
-          alert(`₹${income} wallet me add ho gaye!`);
-          loadUserPlans();
-        });
-    }
-
-    function logout() {
-      localStorage.clear();
-      location.reload();
-    }
-
-    function submitDeposit() {
-      const amount = document.getElementById('depositAmount').value;
-      const utr = document.getElementById('depositUTR').value.trim();
-
-      if(!amount || utr.length < 6) {
-        alert("Valid amount aur UTR number enter karein.");
-        return;
-      }
-
-      if(client) {
-        client.from('transactions').insert([
-          { user_phone: currentUser.phone, amount: amount, utr: utr, type: 'deposit', status: 'pending' }
-        ]).then();
-      }
-
-      alert("Deposit request bhej di gayi hai! Verification ke baad balance add ho jayega.");
-      closeModal('depositModal');
-    }
-
-    function submitWithdraw() {
-      const amount = parseFloat(document.getElementById('withdrawAmount').value);
-      const upi = document.getElementById('withdrawUPI').value.trim();
-
-      if(!amount || amount < 200) {
-        alert("Minimum withdrawal limit ₹200 hai.");
-        return;
-      }
-      if(amount > currentUser.balance) {
-        alert("Paryapt balance nahi hai.");
-        return;
-      }
-      if(!upi) {
-        alert("UPI ID enter karein.");
-        return;
-      }
-
-      const newBal = currentUser.balance - amount;
-      currentUser.balance = newBal;
-      document.getElementById('walletBal').innerText = newBal.toFixed(2);
-      localStorage.setItem('solar_bal', newBal);
-
-      if(client) {
-        client.from('profiles').update({ balance: newBal }).eq('phone', currentUser.phone).then();
-        client.from('transactions').insert([
-          { user_phone: currentUser.phone, amount: amount, upi_id: upi, type: 'withdraw', status: 'pending' }
-        ]).then();
-      }
-
-      alert("Withdrawal request submit ho gayi hai.");
-      closeModal('withdrawModal');
-    }
-
-    function copyReferralLink() {
-      const code = currentUser.referral_code || ("SOLAR" + currentUser.phone.slice(-4));
-      const link = window.location.origin + window.location.pathname + "?ref=" + code;
-      navigator.clipboard.writeText(link);
-      alert("Referral link copy ho gaya!");
-    }
-
-    function shareOnWhatsApp() {
-      const code = currentUser.referral_code || ("SOLAR" + currentUser.phone.slice(-4));
-      const link = window.location.origin + window.location.pathname + "?ref=" + code;
-      const text = encodeURIComponent(`The Solar Invest join karein aur rozana earn karein!\nLink: ${link}`);
-      window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
-    }
-  </script>
-</body>
-</html>
+  <!-- BOTTOM NAVIGATION BAR -->
+  <nav id="bottomNav" class="hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0d0f17]/95 backdrop-blur-lg border-t border-slate-800/80 px-4 py-2 max-w-md mx-auto flex justify-between items-center text-[10px] font-bold">
+    <button onclick="switchTab('home')" class="nav-item flex flex-col items-center gap-1 text-amber-400" data-tab="home">
+      <i class="fa-solid fa-house text-sm"></i>
+      <span>Home</span>
+    </button>
+    <button onclick="switchTab('wallet')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="wallet">
+      <i class="fa-solid fa-wallet text-sm"></i>
+      <span>Wallet</span>
+    </button>
+    <button onclick="switchTab('earning')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="earning">
+      <i class="fa-solid fa-chart-pie text-sm"></i>
+      <span>Earning</span>
+    </button>
+    <button onclick="switchTab('refer')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab=
