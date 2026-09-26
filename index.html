@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Solar Invest - Premium Solar Asset Management</title>
+  <title>The Solar Invest - Clean Energy Assets</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,7 +17,7 @@
 </head>
 <body class="bg-[#090a0f] text-slate-100 min-h-screen pb-24 antialiased selection:bg-amber-500 selection:text-black">
 
-  <!-- TOP HEADER -->
+  <!-- Header -->
   <header class="bg-[#11131c]/90 backdrop-blur-md border-b border-amber-500/20 px-4 py-3 sticky top-0 z-40 flex justify-between items-center shadow-lg">
     <div class="flex items-center gap-2.5">
       <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20">
@@ -40,11 +40,15 @@
     </div>
   </header>
 
+  <!-- Notice -->
+  <div class="bg-amber-500/10 border-b border-amber-500/20 px-3 py-1.5 text-xs text-amber-300 flex items-center gap-2">
+    <i class="fa-solid fa-bullhorn text-xs text-amber-400"></i>
+    <marquee scrollamount="4">The Solar Invest me daily income plans live hain! 24/7 VIP WhatsApp support uplabdh hai.</marquee>
+  </div>
+
   <!-- AUTH SECTION (LOGIN / REGISTER) -->
   <div id="authSection" class="p-4 max-w-sm mx-auto mt-6">
     <div class="gold-card p-6 rounded-3xl shadow-2xl relative overflow-hidden">
-      <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
-      
       <div class="text-center mb-6">
         <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center mx-auto mb-2 text-xl border border-amber-400/20">
           <i class="fa-solid fa-shield-halved"></i>
@@ -56,7 +60,7 @@
       <div class="space-y-3.5">
         <div>
           <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Aapka Naam (Full Name)</label>
-          <input id="authName" type="text" placeholder="e.g. Vikash Kumar" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1">
+          <input id="authName" type="text" placeholder="e.g. Vikash" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1">
         </div>
         <div>
           <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Mobile Number</label>
@@ -64,15 +68,15 @@
         </div>
         <div>
           <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Password</label>
-          <input id="authPass" type="password" placeholder="Min. 4 characters" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
+          <input id="authPass" type="password" placeholder="Any password" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono">
         </div>
         <div>
           <label class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Referral Code (Optional)</label>
           <input id="authRef" type="text" placeholder="Invite Code" class="w-full bg-[#11131c] border border-slate-800 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-amber-400 mt-1 font-mono uppercase">
         </div>
         
-        <button id="authBtn" onclick="handleAuthAction()" class="w-full gold-gradient text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-2">
-          Login / Register
+        <button id="authBtn" onclick="fastLogin()" type="button" class="w-full gold-gradient text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 active:scale-95 transition mt-2">
+          Continue to Dashboard
         </button>
       </div>
     </div>
@@ -81,10 +85,8 @@
   <!-- DASHBOARD CONTAINER -->
   <main id="mainDashboard" class="hidden p-4 max-w-md mx-auto space-y-4">
 
-    <!-- TAB 1: HOME (PORTFOLIO & PRODUCTS) -->
+    <!-- TAB 1: HOME -->
     <div id="tab-home" class="space-y-4 tab-content">
-      
-      <!-- Wallet Quick Overview -->
       <div class="gold-card p-5 rounded-3xl shadow-xl relative overflow-hidden">
         <div class="flex justify-between items-start">
           <div>
@@ -108,7 +110,7 @@
         </div>
       </div>
 
-      <!-- Verified Solar Investment Products -->
+      <!-- Solar Investment Products -->
       <div class="space-y-3">
         <div class="flex items-center justify-between px-1">
           <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
@@ -117,7 +119,7 @@
           <span class="text-[9px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-md border border-emerald-500/20 font-black">SECURE</span>
         </div>
 
-        <!-- Product 1: ₹290 Plan -->
+        <!-- Plan 1: 290 -->
         <div class="gold-card p-4 rounded-3xl relative overflow-hidden flex flex-col gap-3">
           <div class="flex gap-3 items-center">
             <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-2xl flex-shrink-0">
@@ -142,7 +144,7 @@
           </button>
         </div>
 
-        <!-- Product 2: ₹399 Plan -->
+        <!-- Plan 2: 399 -->
         <div class="gold-card p-4 rounded-3xl relative overflow-hidden flex flex-col gap-3">
           <div class="flex gap-3 items-center">
             <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl flex-shrink-0">
@@ -168,7 +170,7 @@
         </div>
       </div>
 
-      <!-- Active Investment Plans -->
+      <!-- Active Plans -->
       <div class="gold-card p-4 rounded-3xl space-y-3">
         <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
           <i class="fa-solid fa-chart-line text-amber-400"></i> Active Projects
@@ -229,7 +231,6 @@
         </div>
       </div>
 
-      <!-- Date-wise Earning History -->
       <div class="gold-card p-4 rounded-3xl space-y-3">
         <h3 class="text-xs font-black tracking-wider uppercase text-slate-300 flex items-center gap-1.5">
           <i class="fa-solid fa-calendar-check text-emerald-400"></i> Daily Earning Ledger
@@ -253,7 +254,6 @@
           </span>
         </div>
 
-        <!-- Referral Link Share Box -->
         <div class="bg-[#11131c] p-3 rounded-2xl border border-slate-800 flex justify-between items-center">
           <div>
             <span class="text-[9px] text-slate-500 block uppercase font-bold">Invite Code</span>
@@ -269,7 +269,6 @@
         </button>
       </div>
 
-      <!-- Referral Metrics -->
       <div class="grid grid-cols-2 gap-2.5">
         <div class="gold-card p-3 rounded-2xl">
           <span class="text-[10px] text-slate-400 block font-semibold">Total Referrals</span>
@@ -288,15 +287,6 @@
           <span class="text-lg font-black text-amber-400 font-mono">₹<span id="metricBonus">0.00</span></span>
         </div>
       </div>
-
-      <!-- Partner Rules -->
-      <div class="gold-card p-4 rounded-3xl space-y-2 text-[11px] text-slate-400">
-        <h4 class="font-bold text-slate-200 uppercase text-[10px] text-amber-400">Commission & Level Structure</h4>
-        <p>• <b>Level 1 (0-5 Ref):</b> 1% transaction commission.</p>
-        <p>• <b>Level 2 (6-15 Ref):</b> 1% commission + Tier 2 milestone rewards.</p>
-        <p>• <b>Level 3 (16+ Ref):</b> VIP status + eligible partner incentives.</p>
-        <p class="text-[10px] text-slate-500 italic">*Bonuses and commissions are strictly calculated automatically on actual eligible transactions.</p>
-      </div>
     </div>
 
     <!-- TAB 5: PROFILE -->
@@ -309,17 +299,6 @@
           <h3 id="profileFullName" class="font-bold text-white text-base">User Name</h3>
           <p id="profilePhoneNumber" class="text-xs text-slate-400 font-mono mt-0.5">+91 </p>
           <span class="inline-block mt-1 text-[9px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 font-bold">ACTIVE ACCOUNT</span>
-        </div>
-      </div>
-
-      <div class="gold-card p-4 rounded-3xl space-y-3 text-xs">
-        <div class="flex justify-between py-2 border-b border-slate-800">
-          <span class="text-slate-400">Account Security</span>
-          <span class="text-emerald-400 font-bold">Password Protected</span>
-        </div>
-        <div class="flex justify-between py-2 border-b border-slate-800">
-          <span class="text-slate-400">24/7 Dedicated Manager</span>
-          <span class="text-amber-400 font-bold">+91 9559032116</span>
         </div>
       </div>
 
@@ -344,4 +323,24 @@
       <i class="fa-solid fa-chart-pie text-sm"></i>
       <span>Earning</span>
     </button>
-    <button onclick="switchTab('refer')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab=
+    <button onclick="switchTab('refer')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="refer">
+      <i class="fa-solid fa-user-group text-sm"></i>
+      <span>Refer</span>
+    </button>
+    <button onclick="switchTab('profile')" class="nav-item flex flex-col items-center gap-1 text-slate-400 hover:text-slate-200" data-tab="profile">
+      <i class="fa-solid fa-user text-sm"></i>
+      <span>Profile</span>
+    </button>
+  </nav>
+
+  <!-- FLOATING 24/7 WHATSAPP SUPPORT BUTTON -->
+  <a id="waSupportBtn" href="https://wa.me/919559032116?text=Namaste!%20Mujhe%20The%20Solar%20Invest%20platform%20par%20help%20chahiye." target="_blank" class="fixed bottom-20 right-4 z-40 bg-emerald-500 hover:bg-emerald-600 text-white px-3.5 py-2 rounded-full flex items-center gap-2 shadow-2xl border border-emerald-400/40 text-xs font-bold transition">
+    <i class="fa-brands fa-whatsapp text-base"></i>
+    <span>VIP Support</span>
+  </a>
+
+  <!-- DEPOSIT MODAL -->
+  <div id="depositModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="gold-card w-full max-w-sm rounded-3xl p-5 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center">
+        <h3 class="font-extrabold text-sm text-white">Deposit Fu
